@@ -1,2 +1,5 @@
 # Lab-de-projetos-e-Software-2022-1
-Trabalho do laboratório de projetos
+Requisitos
+1 - Clínica
+a - 
+2 - Usuário final
