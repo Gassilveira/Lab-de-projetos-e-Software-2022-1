@@ -20,3 +20,8 @@ a - Possibilidade de acessas o sistema e verificar os exames
 b - Possibilidade de compartilhar os exames via um QR Code
 
 c - Este QR code deverá apontar para uma página de acesso livre na web disponível por um tempo determinado para que a pessoa com quem o exame está sendo compartilhado possa visualizalo
+
+
+Metodologia
+
+Mistura de canbam com metodologias ágeis
