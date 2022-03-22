@@ -22,6 +22,19 @@ b - Possibilidade de compartilhar os exames via um QR Code
 c - Este QR code deverá apontar para uma página de acesso livre na web disponível por um tempo determinado para que a pessoa com quem o exame está sendo compartilhado possa visualizalo
 
 
-Metodologia
-
-Mistura de canbam com metodologias ágeis
+Requisitos funcionais
+Paciente
+- Executar a visualização e exclusão de exames.
+- Capacidade de visualizar os exames na web.
+- Possibilidade de compartilhar esses exames de forma segura.
+- Habilidade de alterar a senha quando necessário.
+- Capacidade de fazer e dar manutenção em um cadastro.
+Médico/Laboratório
+- Capacidade de fazer e dar manutenção em um cadastro.
+- Possibilidade de gerar chaves de api.
+- Possibilidade de fazer chamadas da api para enviar exames associado ao paciente.
+- Possibilidade de cadastrar novos usuários no sistema caso ele não esteja no cadastro.
+Sistema
+- Exames serão salvos em um ambiente seguro e de fácil acesso ao paciente.
+- Controle do envio de exames para que estes sejam feitos apenas por entidades a quem isso compete.
+- Armazenamento e possibilidade de o usuário visualizar a entidade que gerou os exames.
