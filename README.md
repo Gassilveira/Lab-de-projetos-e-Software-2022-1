@@ -27,7 +27,7 @@ Requisitos não funcionais
 - Implementação do backend em Laravel.
 
 
-Instruções projeto (WSL + Docker)... utilize Wsl com ubuntu
+Instruções Projeto (WSL + Docker)... Utilize WSL com ubuntu
 - clone
 - cp .env.example .env
 - cp -R _sail/vendor/ ./
