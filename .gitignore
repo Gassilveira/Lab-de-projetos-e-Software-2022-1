@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor/*
-!/vendor/bin/sail
+!/vendor/bin/
 .env
 .env.backup
 .phpunit.result.cache
