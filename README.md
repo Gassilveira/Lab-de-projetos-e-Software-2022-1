@@ -25,3 +25,11 @@ Requisitos não funcionais
 - Armazenamento das informações cadastrais em um banco de dados.
 - Front end responsivo para fácil visualização tanto em ambientes desktop quanto móbile.
 - Implementação do backend em Laravel.
+
+
+Instruções projeto (WSL + Docker)... utilize Wsl com ubuntu
+- clone
+- cp .env.example .env
+- cp -R _sail/vendor/ ./
+- ./vendor/bin/sail up -d
+- http://localhost
