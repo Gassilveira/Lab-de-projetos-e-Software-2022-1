@@ -3,8 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor/*
-!/vendor/bin/
-!/vendor/laravel/sail/
 .env
 .env.backup
 .phpunit.result.cache
