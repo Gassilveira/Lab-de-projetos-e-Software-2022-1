@@ -33,3 +33,6 @@ Instruções Projeto (WSL + Docker)... Utilize WSL com ubuntu
 - cp -R _sail/vendor/ ./
 - ./vendor/bin/sail up -d
 - http://localhost
+- Para conectar ao container 
+- docker ps -a para listar container 
+- docker exec -it {{nome do container ou id}} /bin/bash
