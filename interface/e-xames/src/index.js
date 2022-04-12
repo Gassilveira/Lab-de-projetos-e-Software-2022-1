@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './style.module.css'
+import ManutencaoContasUsuario from './views/ManutencaoContasUsuario'
+import UploadExames from './views/UploadExames'
+import ManutencaoContasClinica from './views/ManutencaoContasClinica'
+import VisualizaoExames from './views/VisualizaoExames'
+import Login from './views/Login'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Route
+          exact
+          component={ManutencaoContasUsuario}
+          path="/manutencao/contas/usuario"
+        />
+        <Route exact component={UploadExames} path="/upload/exames" />
+        <Route
+          exact
+          component={ManutencaoContasClinica}
+          path="/manutencao/contas/clinica"
+        />
+        <Route exact component={VisualizaoExames} path="/visualizao-exames" />
+        <Route exact component={Login} path="/login" />
+      </div>
+    </Router>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('app'))
