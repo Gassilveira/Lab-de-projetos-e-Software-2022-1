@@ -10,10 +10,10 @@ const UploadExames = (props) => {
   return (
     <div className={styles['container']}>
       <Helmet>
-        <title>Upload exames - Shadowy Hilarious Trout</title>
+        <title>Upload Exames</title>
         <meta
           property="og:title"
-          content="Upload exames - Shadowy Hilarious Trout"
+          content="Upload exames"
         />
       </Helmet>
       <div className={` ${styles['container01']} ${projectStyles['row']} `}>
@@ -23,6 +23,7 @@ const UploadExames = (props) => {
             src="/playground_assets/logo3_29_2118-200h.png"
             className={styles['image']}
           />
+          {/*
           <div className={styles['IconGroup']}>
             <div data-type="BurgerMenu" className={styles['BurgerMenu']}>
               <svg viewBox="0 0 1024 1024" className={styles['icon']}>
@@ -36,6 +37,7 @@ const UploadExames = (props) => {
               <path d="M656.571 641.143c0-9.714-4-18.857-10.857-25.714l-103.429-103.429 103.429-103.429c6.857-6.857 10.857-16 10.857-25.714s-4-19.429-10.857-26.286l-51.429-51.429c-6.857-6.857-16.571-10.857-26.286-10.857s-18.857 4-25.714 10.857l-103.429 103.429-103.429-103.429c-6.857-6.857-16-10.857-25.714-10.857s-19.429 4-26.286 10.857l-51.429 51.429c-6.857 6.857-10.857 16.571-10.857 26.286s4 18.857 10.857 25.714l103.429 103.429-103.429 103.429c-6.857 6.857-10.857 16-10.857 25.714s4 19.429 10.857 26.286l51.429 51.429c6.857 6.857 16.571 10.857 26.286 10.857s18.857-4 25.714-10.857l103.429-103.429 103.429 103.429c6.857 6.857 16 10.857 25.714 10.857s19.429-4 26.286-10.857l51.429-51.429c6.857-6.857 10.857-16.571 10.857-26.286zM877.714 512c0 242.286-196.571 438.857-438.857 438.857s-438.857-196.571-438.857-438.857 196.571-438.857 438.857-438.857 438.857 196.571 438.857 438.857z"></path>
             </svg>
           </div>
+          */}
           <div data-type="MobileMenu" className={styles['MobileMenu']}>
             <nav className={styles['Nav']}>
               <div className={styles['Container02']}>

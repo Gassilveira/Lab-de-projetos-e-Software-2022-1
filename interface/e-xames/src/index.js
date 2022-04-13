@@ -8,6 +8,7 @@ import UploadExames from './views/UploadExames'
 import ManutencaoContasClinica from './views/ManutencaoContasClinica'
 import VisualizaoExames from './views/VisualizaoExames'
 import Login from './views/Login'
+import Teste from './views/Teste'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         />
         <Route exact component={VisualizaoExames} path="/visualizao-exames" />
         <Route exact component={Login} path="/login" />
+        <Route exact component={Teste} path="/teste" />
       </div>
     </Router>
   )

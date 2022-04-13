@@ -8,17 +8,19 @@ import styles from './login.module.css'
 const Login = (props) => {
   return (
     <div className={styles['container']}>
+      
       <Helmet>
-        <title>Shadowy Hilarious Trout</title>
+        <title>Login</title>
         <meta property="og:title" content="Shadowy Hilarious Trout" />
       </Helmet>
-      <div className={` ${styles['container1']} ${projectStyles['row']} `}>
+
+      <div className={`${styles['container1']}  ${projectStyles['row']}`}>
         <img
           alt="image"
           src="/playground_assets/logo3_29_2118-300h.png"
           className={styles['image']}
         />
-        <div className={styles['container2']}>
+        <div className={`${styles['container2']}`}>
           <input
             type="text"
             placeholder="Login"
