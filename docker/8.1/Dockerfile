@@ -13,7 +13,7 @@ ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev python2 \
+    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin wget libpng-dev python2 unzip openjdk-8-jdk \
     && mkdir -p ~/.gnupg \
     && chmod 600 ~/.gnupg \
     && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
@@ -36,6 +36,7 @@ RUN apt-get update \
     && npm install -g npm \
     && npm install -g npm@8.5.5 \
     && npm i tar \
+    && npm install -g expo-cli \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
@@ -45,11 +46,28 @@ RUN apt-get update \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+    && apt-get install usbutils
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.1
 
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
+
+# Set up new user
+RUN useradd -ms /bin/bash developer
+USER developer
+WORKDIR /home/developer
+
+# Prepare Android directories and system variables
+RUN mkdir -p android-sdk
+ENV ANDROID_SDK_ROOT=/home/developer/android-sdk
+RUN mkdir -p .android && touch .android/repositories.cfg
+
+# Set up Android SDK
+RUN curl https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip -o20:53 01/05/2022 sdk-tools.zip 
+RUN unzip sdk-tools.zip && rm sdk-tools.zip
+RUN mv cmdline-tools android-sdk/cmdline-tools
+RUN cd android-sdk/cmdline-tools/bin && yes | ./sdkmanager --licenses --sdk_root=/home/developer/android-sdk
+RUN cd android-sdk/cmdline-tools/bin && ./sdkmanager --sdk_root=/home/developer/android-sdk "build-tools;29.0.2" "patcher;v4" "platform-tools" "platforms;android-30" "sources;android-30" "cmdline-tools;latest"
 
 COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -58,4 +76,6 @@ RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8000
 EXPOSE 3000
+EXPOSE 19000-19900
+
 ENTRYPOINT ["start-container"]
