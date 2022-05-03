@@ -6,6 +6,8 @@ Apresentação: https://docs.google.com/presentation/d/11MQy6Am5JjKe7l3jz8FBiTfl
 
 Trello: https://trello.com/b/FOMUFPuw/fadergs-lps
 
+Video: https://youtu.be/cp1HtYDx2rY
+
 Requisitos funcionais
 Paciente
 - Executar a visualização e exclusão de exames.
