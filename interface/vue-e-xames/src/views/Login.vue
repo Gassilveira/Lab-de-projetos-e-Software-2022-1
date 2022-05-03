@@ -3,7 +3,7 @@
     <div class="login-container1 row">
       <img
         alt="image"
-        src="@/assets/logo3_29_2118-300h.png"
+        src="../assets/logo3_29_2118-300h.png"
         class="login-image"
       />
       <div class="login-container2">
@@ -65,7 +65,7 @@ export default {
 .login-container2 {
   flex: 0 0 auto;
   width: 357px;
-  height: 368px;
+  height: 268px;
   margin: auto;
   display: flex;
   box-shadow: -2px 2px 2px 0.5px rgba(166, 166, 166, 0.61);
@@ -88,6 +88,7 @@ export default {
   border-top-right-radius: 0;
 }
 .login-button {
+  text-decoration: none;
   margin-top: var(--dl-space-space-sixunits);
   background-color: #569ee8;
 }
