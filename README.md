@@ -40,11 +40,6 @@ Instruções Projeto (WSL + Docker)... Utilize WSL com ubuntu
 - ./vendor/bin/sail up -d
 - http://laravel.test
 
-
-- opcional:
-- sed -i "127.0.0.1 e-xames.test" /etc/hosts
-- No navegador pode conectar com - http://e-xames.test
-
 - Para conectar ao container 
 - docker ps -a para listar container 
 - docker exec -it {{nome do container ou id}} /bin/bash
