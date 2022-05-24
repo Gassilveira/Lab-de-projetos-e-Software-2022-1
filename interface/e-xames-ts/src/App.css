@@ -1,0 +1,18 @@
+#view {
+  padding-left: 350px;
+}
+#view.collapsed {
+  padding-left: 50px;
+}
+
+.sidebar {
+  flex-direction: column-reverse !important;
+}
+.sidebar.v-sidebar-menu .vsm-arrow:after {
+  content: "\f105";
+  font-family: "FontAwesome";
+}
+.sidebar.v-sidebar-menu .collapse-btn:after {
+  content: "\f07e";
+  font-family: "FontAwesome";
+}
