@@ -16,7 +16,7 @@
                     placeholder="Senha"
                     class="login_txt"
                 />
-                <router-link class="login-button button" :to="{name: 'Login'}"><span class="login-text">Login</span> </router-link>
+                <router-link class="login-button button" :to="{path: '/exames'}"><span class="login-text">Login</span> </router-link>
             </div>
         </div>
     </div>
