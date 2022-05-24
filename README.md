@@ -34,10 +34,12 @@ Requisitos não funcionais
 
 Instruções Projeto (WSL + Docker)... Utilize WSL com ubuntu
 - clone
+- cd {{FolderName}}
 - cp .env.example .env
 - cp -R _sail/vendor/ ./
 - ./vendor/bin/sail up -d
-- http://localhost
+- http://laravel.test
+
 - Para conectar ao container 
 - docker ps -a para listar container 
 - docker exec -it {{nome do container ou id}} /bin/bash

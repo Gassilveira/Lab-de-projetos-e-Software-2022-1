@@ -73,9 +73,10 @@ COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.1/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
+RUN sudo chmod o+w /var/www/html/storage/ -R
 
 EXPOSE 8000
-EXPOSE 3000
+EXPOSE 3000-3009
 EXPOSE 19000-19900
 
 ENTRYPOINT ["start-container"]
