@@ -11,7 +11,7 @@
       @collapse="onCollapse"
     />
   </header>
-  <main class="ml-[80px]">
+  <main class="ml-[64px]">
     <RouterView />
   </main>
 </template>
