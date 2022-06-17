@@ -18,13 +18,13 @@ return new class extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('clinic_id');
             $table->string('specialty', 150);
-            $table->string('exam_desc', 250);
-            $table->string('exam_url', 255);
+            $table->string('desc', 250);
+            $table->string('url', 255);
             $table->dateTime('exam_date');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('reg_patients')->onDelete('cascade');
-            $table->foreign('clinic_id')->references('id')->on('reg_clinics')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade');
         });
     }
 

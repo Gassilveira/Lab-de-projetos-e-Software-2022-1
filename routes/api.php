@@ -20,5 +20,6 @@ Route::post('register', [App\Http\Controllers\Api\AuthController::class, 'regist
 Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group( function () {
-    Route::get('user', [App\Http\Controllers\Api\AuthController::class, 'userInfo']);
+    Route::get('user', [App\Http\Controllers\Api\UserController::class, 'get']);
+    Route::post('user/update', [App\Http\Controllers\Api\UserController::class, 'update']);
 });

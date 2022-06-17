@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\ClinicUsers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
@@ -41,23 +42,16 @@ class AuthController extends BaseController
     public function login(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            $user = Auth::user();
+            $user = Auth::user()->load('clinic');
+
             $success['token'] = $user->createToken('Personal Token')->accessToken;
             $success['name'] =  $user->name;
+            $success['has_clinic'] = ($user->clinic)? true : false;
 
             return $this->sendResponse($success, 'User login successfully.');
         }
         else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         }
-    }
-
-    public function userInfo()
-    {
-
-        $user = auth()->user();
-
-        return response()->json(['user' => $user], 200);
-
     }
 }

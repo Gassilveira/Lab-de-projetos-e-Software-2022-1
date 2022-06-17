@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reg_clinics', function (Blueprint $table) {
+        Schema::create('clinics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('cnpj', 14)->unique()->nullable(false);
-            $table->string('api_token');
-            $table->dateTime('api_token_create_date');
-            $table->dateTime('api_token_expire_date');
+            $table->String('name',255)->nullable(false);
+            $table->string('api_token')->nullable(true);
+            $table->dateTime('api_token_create_date')->nullable(true);
+            $table->dateTime('api_token_expire_date')->nullable(true);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
