@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function clinic()
     {
-        return $this->hasOne(ClinicUsers::class, 'user_id', 'id');
+        return $this->hasMany(ClinicUsers::class, 'user_id', 'id');
     }
 
     public function exams()

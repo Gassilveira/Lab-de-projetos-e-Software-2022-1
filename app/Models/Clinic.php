@@ -20,4 +20,6 @@ class Clinic extends Model
         'api_token_created_date' => 'datetime',
         'api_token_expire_date' => 'datetime',
     ];
+
+
 }
