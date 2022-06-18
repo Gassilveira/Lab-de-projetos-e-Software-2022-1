@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('birthday')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('share_code',100)->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

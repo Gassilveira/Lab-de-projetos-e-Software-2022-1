@@ -19,7 +19,19 @@ Route::get('/', function () {
 Route::post('register', [App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
+Route::get('exams/history/{code}', [App\Http\Controllers\Api\ExamsController::class, 'history']);
+
 Route::middleware('auth:api')->group( function () {
+
+    /* User */
     Route::get('user', [App\Http\Controllers\Api\UserController::class, 'get']);
     Route::post('user/update', [App\Http\Controllers\Api\UserController::class, 'update']);
+
+    /* Clinic */
+
+    /* Exams */
+    Route::get('exams', [App\Http\Controllers\Api\ExamsController::class, 'list']);
+    Route::get('exams/share', [App\Http\Controllers\Api\ExamsController::class, 'share']);
+
+
 });
