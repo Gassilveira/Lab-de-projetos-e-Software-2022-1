@@ -46,6 +46,20 @@ class ExamsController extends BaseController
         }
     }
 
+    public function unshare()
+    {
+        $user = Auth::user();
+
+        if($user)
+        {
+            $user->share_code = null;
+            $user->save();
+            return $this->sendResponse([], 'Share disabled!');
+        }else{
+            return $this->sendError('Unauthorised.', ['error' => 'User not found']);
+        }
+    }
+
     public function history(Request $request, $code)
     {
         $validator = Validator::make(['code' => $code], [
