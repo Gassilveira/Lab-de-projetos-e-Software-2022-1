@@ -33,7 +33,8 @@ Route::middleware('auth:api')->group( function () {
     /* Clinic */
     Route::get('clinic', [App\Http\Controllers\Api\ClinicController::class, 'get']);
     Route::put('clinic/update', [App\Http\Controllers\Api\ClinicController::class, 'update']);
-    Route::post('clinic/allow/user', [App\Http\Controllers\Api\ClinicController::class, 'allowUser']);
+    Route::post('clinic/add/permission', [App\Http\Controllers\Api\ClinicController::class, 'allowUser']);
+    Route::post('clinic/delete/permission', [App\Http\Controllers\Api\ClinicController::class, 'removeUser']);
     Route::post('clinic/send/exam', [App\Http\Controllers\Api\ClinicController::class, 'sendExam']);
     Route::post('register/user', [App\Http\Controllers\Api\AuthController::class, 'register']);
 
