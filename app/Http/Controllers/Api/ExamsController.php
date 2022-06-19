@@ -7,6 +7,7 @@ use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Validator;
 
@@ -81,5 +82,23 @@ class ExamsController extends BaseController
         }else{
             return $this->sendError('Unauthorised.', ['error' => 'No history to share']);
         }
+    }
+
+    public function get(Request $request, $file)
+    {
+        $fileName = str_replace("-", "/", $file);
+
+        $exam = Exam::where('url', $fileName)->first();
+        $user = User::find($exam->patient_id);
+
+        if($user->share_code == ""){
+            return $this->sendError('Unauthorised.', ['error' => 'Share not allowed']);
+        }
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return  Storage::download($fileName,'filename.pdf',$headers);
     }
 }

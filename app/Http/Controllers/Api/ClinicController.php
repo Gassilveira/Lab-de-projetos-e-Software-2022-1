@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Clinic;
 use App\Models\ClinicUsers;
 use App\Models\Exam;
 use App\Models\User;
 use App\Rules\CPF;
 use Carbon\Carbon;
+use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+
 use Validator;
 
 class ClinicController extends BaseController
@@ -220,6 +220,11 @@ class ClinicController extends BaseController
             return $this->sendError('Unauthorised.', ['error' => 'Patient not registered']);
         }
         return $this->sendError('Not Found.', ['error' => 'Clinic not found']);
+    }
+
+    public function getApiToken(Request $request)
+    {
+
     }
 
     private function checkPermission(User $user, Clinic $clinic)

@@ -20,6 +20,9 @@ Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 Route::get('exams/history/{code}', [App\Http\Controllers\Api\ExamsController::class, 'history']);
 
+/* Public exams */
+Route::get('exams/get/{file}', [App\Http\Controllers\Api\ExamsController::class, 'get']);
+
 Route::middleware('auth:api')->group( function () {
 
     /* User */
@@ -32,6 +35,7 @@ Route::middleware('auth:api')->group( function () {
 
     /* Clinic */
     Route::get('clinic', [App\Http\Controllers\Api\ClinicController::class, 'get']);
+    Route::get('clinic/get/api/token', [App\Http\Controllers\Api\ClinicController::class, 'getApiToken']);
     Route::put('clinic/update', [App\Http\Controllers\Api\ClinicController::class, 'update']);
     Route::post('clinic/add/permission', [App\Http\Controllers\Api\ClinicController::class, 'allowUser']);
     Route::post('clinic/delete/permission', [App\Http\Controllers\Api\ClinicController::class, 'removeUser']);
