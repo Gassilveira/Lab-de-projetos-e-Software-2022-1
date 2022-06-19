@@ -1,3 +1,4 @@
+import { userStore } from './stores/user';
 import { useColorMode, useCycleList } from '@vueuse/core'
 import ToggleSwitch from './components/ToggleSwitch.vue'
 export default {
@@ -27,24 +28,32 @@ export default {
           icon: "fa fa-solid fa-house-chimney-user",
         },
         {
-          href: "/manutencao/usuario",
-          title: "Usuário",
-          icon: "fa fa-solid fa-address-card",
-        },
-        {
-          href: "/manutencao/clinica",
-          title: "Clinica",
-          icon: "fa fa-solid fa-house-chimney-medical",
-        },
-        {
           href: "",
-          title: "Exames",
-          icon: "fa fa-solid fa-folder",
+          title: "Usuário",
+          icon: "fa-solid fa-circle-user",
           child: [
+            {
+              href: "/manutencao/usuario",
+              title: "Meu usuário",
+              icon: "fa fa-solid fa-address-card",
+            },
             {
               href: "/exames",
               title: "Visualizar Exames",
               icon: "fa fa-solid fa-file-waveform",
+            },
+          ]
+        },
+        {
+          href: "",
+          title: "Clinica",
+          icon: "fa-solid fa-circle-h",
+          hidden: (this.hasClinic)? false : true,
+          child: [
+            {
+              href: "/manutencao/clinica",
+              title: "Minha Clinica",
+              icon: "fa fa-solid fa-house-chimney-medical",
             },
             {
               href: "/exames/enviar",
@@ -108,11 +117,14 @@ export default {
         light: 'light-theme',
       },
     });
+    const user = userStore();
+    const hasClinic = user.gethasClinic;
     const { next } = useCycleList(['dark', 'light'], { initialValue: mode })
 
     return {
       mode,
       next,
+      hasClinic
     };
   },
 };

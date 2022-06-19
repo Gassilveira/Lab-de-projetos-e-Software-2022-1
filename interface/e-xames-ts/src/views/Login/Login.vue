@@ -2,7 +2,8 @@
 <style src="./Login.css"></style>
 
 <template>
-    <div class="login_container">
+    <Loading v-if="isLoading"></Loading>
+    <div class="login_container" v-else>
         <div class="login_box">
             <img
             alt="image"
@@ -10,13 +11,10 @@
             class="login_image"
             />
             <div class="login_form">
-                <input type="text" placeholder="Login" class="login_txt" />
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    class="login_txt"
-                />
-                <router-link class="login-button button" :to="{path: '/exames'}"><span class="login-text">Login</span> </router-link>
+                <input type="text" placeholder="E-mail" class="login_txt" v-model="email" />
+                <input type="password" placeholder="Senha" class="login_txt" v-model="password"/>
+                <button class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700" @click="login"> Entrar </button>
+                
             </div>
         </div>
     </div>

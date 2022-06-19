@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import("../views/Login/Login.vue"),
       props: true,
       meta: {
-        requiredAuth: false,
+        requiredAuth: true,
       },
     },
     {
@@ -33,7 +33,7 @@ const router = createRouter({
       component: () => import("../views/MaintenanceUser/MaintenanceUser.vue"),
       props: true,
       meta: {
-        requiredAuth: false,
+        requiredAuth: true,
       },
     },
     {
@@ -42,7 +42,7 @@ const router = createRouter({
       component: () => import("../views/MaintenanceClinic/MaintenanceClinic.vue"),
       props: true,
       meta: {
-        requiredAuth: false,
+        requiredAuth: true,
       },
     },
     {
@@ -51,7 +51,7 @@ const router = createRouter({
       component: () => import("../views/ViewExams/ViewExams.vue"),
       props: true,
       meta: {
-        requiredAuth: false,
+        requiredAuth: true,
       },
     },
     {
@@ -60,7 +60,7 @@ const router = createRouter({
       component: () => import("../views/SendExams/SendExams.vue"),
       props: true,
       meta: {
-        requiredAuth: false,
+        requiredAuth: true,
       },
     }
   ],
