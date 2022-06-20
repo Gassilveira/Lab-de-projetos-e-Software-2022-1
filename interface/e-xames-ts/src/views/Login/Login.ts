@@ -45,7 +45,6 @@ export default {
       };
       const res = await this.$api.login(payload);
       if (res.status === 200) {
-        console.log(res.data.data);
         auth.isLoggedIN = true;
         auth.token = res.data.data.token;
         user.name = res.data.data.name;

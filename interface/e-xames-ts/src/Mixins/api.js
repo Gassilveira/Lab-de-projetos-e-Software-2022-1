@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 const baseUrl = import.meta.env.VUE_APP_API_URL;
 
 const headers = {
-  Accept: "application/json",
+  Accept: 'application/json',
 };
 
 const headersAutorization = {
-  Authorization: "Bearer ",
-  Accept: "application/json",
+  Authorization: 'Bearer ',
+  Accept: 'application/json',
 };
 
 const instance = axios.create();
@@ -15,15 +15,15 @@ const api = {
   async login(payload) {
     const config = {
       headers: {
-        Accept: "application/json",
-      }
+        Accept: 'application/json',
+      },
     };
     const res = await axios
-      .post(baseUrl + "login", payload, config)
-      .then((response) => {
+      .post(baseUrl + 'login', payload, config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
@@ -32,34 +32,34 @@ const api = {
   async logout(token) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await axios
-      .get(baseUrl + "logout", config)
-      .then((response) => {
+      .get(baseUrl + 'logout', config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
   },
-  
+
   async getUser(token) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .get(baseUrl + "user", config)
-      .then((response) => {
+      .get(baseUrl + 'user', config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
@@ -68,16 +68,16 @@ const api = {
   async updateUser(token, payload) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .put(baseUrl + "user/update", payload, config)
-      .then((response) => {
+      .put(baseUrl + 'user/update', payload, config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
@@ -86,16 +86,16 @@ const api = {
   async updateUserPassword(token, payload) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .put(baseUrl + "user/update/password", payload, config)
-      .then((response) => {
+      .put(baseUrl + 'user/update/password', payload, config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
@@ -104,34 +104,34 @@ const api = {
   async getExamsList(token) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .get(baseUrl + "exams", config)
-      .then((response) => {
+      .get(baseUrl + 'exams', config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
   },
-  
+
   async getClinic(token) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .get(baseUrl + "clinic", config)
-      .then((response) => {
+      .get(baseUrl + 'clinic', config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
         return error.response;
       });
     return res;
@@ -140,16 +140,33 @@ const api = {
   async updateClinic(token, payload) {
     const config = {
       headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
       },
     };
     const res = await instance
-      .put(baseUrl + "clinic/update", payload, config)
-      .then((response) => {
+      .put(baseUrl + 'clinic/update', payload, config)
+      .then(response => {
         return response;
       })
-      .catch((error) => {
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+  async sendExam(token, payload) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    const res = await instance
+      .post(baseUrl + 'clinic/send/exam', payload, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
         return error.response;
       });
     return res;

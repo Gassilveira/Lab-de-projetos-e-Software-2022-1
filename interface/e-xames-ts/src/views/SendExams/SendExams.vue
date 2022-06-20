@@ -2,114 +2,63 @@
 <style src="./SendExams.css"></style>
 
 <template>
-  <div class="uploadexames-container">
-    <div class="uploadexames-container01 row">
-      
-      <div class="uploadexames-container03">
-        <h1 class="uploadexames-text heading">CADASTRO DE EXAMES</h1>
-      </div>
-      <div class="uploadexames-container04"></div>
-      <h1 class="uploadexames-text01">Dados do Paciente</h1>
-      <div class="uploadexames-container05">
-        <div class="uploadexames-container06">
-          <div class="uploadexames-container07">
-            <div class="uploadexames-container08">
-              <label class="uploadexames-text02">CPF DO PACIENTE</label>
-            </div>
-          </div>
-          <label class="uploadexames-text03">nOME COMPLETO</label>
-          <label class="uploadexames-text04">DATA DE NASCIMENTO</label>
-        </div>
-        <div class="uploadexames-container09">
-          <input
-            type="number"
-            id="pacientecpf"
-            name="pacientecpf"
-            required="true"
-            placeholder="CPF do paciente"
-            class="uploadexames-input input"
-          />
-          <input
-            type="text"
-            id="pacientenome"
-            name="pacientenome"
-            required="true"
-            placeholder="Nome Completo"
-            class="input lg"
-          />
-          <input
-            type="date"
-            id="pacientenasc"
-            name="pacientenasc"
-            required="true"
-            placeholder="99/99/9999"
-            class="input lg"
-          />
-        </div>
-      </div>
-      <div class="uploadexames-container10">
-        <h1 class="uploadexames-text05">Dados do Exame</h1>
-        <div class="uploadexames-container11">
-          <div class="uploadexames-container12">
-            <div class="uploadexames-container13">
-              <div class="uploadexames-container14">
-                <label class="uploadexames-text06">dATA/HORA</label>
-              </div>
-            </div>
-            <label class="uploadexames-text07">
-              <span class="uploadexames-text08">
-                ESPECIALIDADE
-                <span v-html="rawkchy"></span>
-              </span>
-            </label>
-            <label class="uploadexames-text09">DESCRIÇÃO DO EXAME</label>
-          </div>
-          <div class="uploadexames-container15">
-            <input
-              type="datetime-local"
-              id="examedatahora"
-              name="datahoraexame"
-              required="true"
-              placeholder="Data do exame"
-              class="uploadexames-input3 input"
-            />
-            <input
-              type="text"
-              id="exameespecialidade"
-              name="especialidadeexame"
-              required="true"
-              placeholder="Especialidade do Exame"
-              class="input lg"
-            />
-            <input
-              type="text"
-              id="examedescricao"
-              name="descricaoexame"
-              required="true"
-              placeholder="Descrição do Exame"
-              class="input lg"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="uploadexames-container16">
+  <Loading v-if="loading"></Loading>
+  <div class="uploadexames-container01 w-full h-[100vh] items-center" v-else>
+    <div class="uploadexames-container03">
+      <h1 class="uploadexames-text heading">ENVIO DE EXAMES</h1>
+    </div>
+    <form
+      class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+    >
+      <div class="flex flex-col gap-2 basis-[33%]">
+        <label class="uppercase font-extrabold">cpf do paciente</label>
         <input
+          class="rounded-md py-1 px-4 border-blue-700"
           type="text"
-          id="camihoarquivo"
-          name="arquivcaminho"
-          disabled="true"
-          placeholder="Caminho do arquivo"
-          class="uploadexames-textinput input"
+          v-model="form.patientCPF"
         />
+      </div>
+      <div class="flex flex-col gap-2 basis-[33%]">
+        <label class="uppercase font-extrabold">Data/hora exame</label>
+        <input
+          class="rounded-md py-1 px-4 border-blue-700"
+          type="datetime-local"
+          v-model="form.date"
+        />
+      </div>
+      <div class="flex flex-col gap-2 basis-[33%]">
+        <label class="uppercase font-extrabold">especialidade</label>
+        <input
+          class="rounded-md py-1 px-4 border-blue-700"
+          type="text"
+          v-model="form.specialty"
+        />
+      </div>
+      <div class="flex flex-col gap-2 basis-[33%]">
+        <label class="uppercase font-extrabold">Arquivo</label>
+        <input
+          class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 py-1 px-4"
+          type="file"
+          @change="saveFile($event)"
+        />
+      </div>
+      <div class="flex flex-col gap-2 basis-[70%]">
+        <label class="uppercase font-extrabold">descrição do exame</label>
+        <textarea
+          class="rounded-md py-1 px-4 border-blue-700"
+          rows="4"
+          type="textarea"
+          v-model="form.desc"
+        ></textarea>
+      </div>
+      <div class="w-full flex flex-row items-center py-8">
         <button
-          id="botaoupoload"
-          name="botaouload"
-          type="button"
-          class="uploadexames-button button"
+          class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+          @click="sendExam($event)"
         >
-          Upload
+          Enviar
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </template>

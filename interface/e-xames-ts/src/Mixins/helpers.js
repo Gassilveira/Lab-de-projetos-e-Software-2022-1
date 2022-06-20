@@ -1,10 +1,12 @@
+import moment from "moment";
 const helpers = {
   data() {
     return {};
   },
   methods: {
-    teste() {
-      console.log("helpers teste");
+    dateConversion(dateTime, inputformat = "YYYY-MM-DDTHH:mm", format = 'DD/MM/YYYY HH:mm:ss') {
+      const dateMoment = moment(dateTime, inputformat);
+      return dateMoment.format(format);
     },
   },
 };

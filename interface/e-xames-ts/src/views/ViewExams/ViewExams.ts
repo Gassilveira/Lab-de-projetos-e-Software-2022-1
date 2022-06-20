@@ -37,7 +37,6 @@ export default {
       if (res.status === 200) {
         this.exams = res.data.data.data;
         this.nextLoad = res.data.data.nex_page_url;
-        console.log(this.exams)
       } else {
         //error
       }

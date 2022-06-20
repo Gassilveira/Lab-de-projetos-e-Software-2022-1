@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
+/* Public history */
 Route::get('exams/history/{code}', [App\Http\Controllers\Api\ExamsController::class, 'history']);
 
 /* Public exams */

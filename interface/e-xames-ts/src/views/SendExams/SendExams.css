@@ -11,11 +11,8 @@
     background-color: rgba(86, 85, 85, 0.63);
   }
   .uploadexames-container01 {
-    width: 97%;
-    height: 902px;
     display: flex;
     position: relative;
-    align-items: flex-start;
     border-radius: var(--dl-radius-radius-radius8);
     flex-direction: column;
     justify-content: flex-start;

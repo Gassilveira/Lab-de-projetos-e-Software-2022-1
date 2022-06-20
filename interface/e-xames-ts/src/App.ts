@@ -109,13 +109,12 @@ export default {
         const hasDarkPreference = window.matchMedia(
           "(prefers-color-scheme: light)"
         ).matches;
-        console.log(hasDarkPreference);
+
         document.documentElement.className = "dark-theme";
         this.next();
       }
     },
     onCollapse(c) {
-      console.log("onCollapse");
       this.collapsed = c;
     },
   },

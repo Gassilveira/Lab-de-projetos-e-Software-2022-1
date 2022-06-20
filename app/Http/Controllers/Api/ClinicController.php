@@ -205,11 +205,11 @@ class ClinicController extends BaseController
                 $exam->clinic_id = $clinic->id;
                 $exam->specialty = $request->specialty;
                 $exam->exam_desc = $request->exam_desc;
-                $exam->exam_date = Carbon::createFromFormat('d/m/Y H:i', $request->exam_date)->toString();
+                $exam->exam_date = Carbon::createFromFormat('d/m/Y H:i:s', $request->exam_date)->toString();
                 $exam->url = '';
                 $exam->save();
 
-                $examFileName = "exam_" . Carbon::createFromFormat('d/m/Y H:i', $request->exam_date)->unix() . "_" . ".pdf";
+                $examFileName = "exam_" . Carbon::createFromFormat('d/m/Y H:i:s', $request->exam_date)->unix() . "_" . ".pdf";
                 $storagePath = "exams/" . str_split($patient->cpf,6)[1] . "/" .  $exam->id . "/";
 
                 $request->exam->storeAs($storagePath, $examFileName);
@@ -218,7 +218,7 @@ class ClinicController extends BaseController
                 $exam->save();
                 return $this->sendResponse('', 'Exam send to user storage');
             }
-            return $this->sendError('Unauthorised.', ['error' => 'Patient not registered']);
+            return $this->sendError('Not found.', ['error' => 'Patient not registered']);
         }
         return $this->sendError('Not Found.', ['error' => 'Clinic not found']);
     }
