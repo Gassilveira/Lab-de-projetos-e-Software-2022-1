@@ -29,6 +29,7 @@ Route::middleware('auth:api')->group( function () {
     Route::get('user', [App\Http\Controllers\Api\UserController::class, 'get']);
     Route::get('logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
     Route::put('user/update', [App\Http\Controllers\Api\UserController::class, 'update']);
+    Route::put('user/update/password', [App\Http\Controllers\Api\UserController::class, 'changePassword']);
 
 
     /* Exams history */

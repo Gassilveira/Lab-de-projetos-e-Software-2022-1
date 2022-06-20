@@ -64,7 +64,7 @@
           <label class="uppercase font-extrabold">Nova Senha</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
-            type="text"
+            type="password"
             v-model="form.password"
           />
         </div>
@@ -72,13 +72,14 @@
           <label class="uppercase font-extrabold">Confirma Nova Senha</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
-            type="text"
+            type="password"
             v-model="form.cPassword"
           />
         </div>
         <div class="w-full flex flex-row items-center py-8">
           <button
             class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+            @click="saveUserNewPassword($event)"
           >
             Salvar Nova Senha
           </button>

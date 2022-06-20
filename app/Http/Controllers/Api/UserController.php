@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Rules\CPF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 
 class UserController extends BaseController
@@ -60,5 +61,35 @@ class UserController extends BaseController
         }
     }
 
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $messsages = [
+            'id.in' => 'User invalid',
+        ];
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'id' => ['required','in:'.$user->id],
+                'password' => 'required',
+                'c_password' => 'required|same:password',
+            ]
+            , $messsages);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        if($user)
+        {
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return $this->sendResponse($user, 'User password updated successfully');
+        }else{
+            return $this->sendError('Unauthorised.', ['error' => '']);
+        }
+    }
 
 }

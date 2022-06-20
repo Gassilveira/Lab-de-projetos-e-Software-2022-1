@@ -49,7 +49,7 @@ export default {
       if (this.form.userID == "") {
         //erro
       } else {
-        let payload = {
+        const payload = {
           id: this.form.userID,
         };
 
@@ -74,9 +74,35 @@ export default {
       }
       this.loading = false;
     },
-    registerChange(input){
+    async saveUserNewPassword(event) {
+      event.preventDefault();
+      if (
+        (this.form.password == "" && this.form.cPassword == "") ||
+        this.form.password != this.form.cPassword
+      ) {
+        return false;
+      }
+      this.loading = true;
+      if (this.form.userID == "") {
+        //erro
+      } else {
+        const payload = {
+          id: this.form.userID,
+          password: this.form.password,
+          c_password: this.form.cPassword,
+        };
+
+        const res = await this.$api.updateUserPassword(this.token, payload);
+        if (res.status === 200) {
+        } else {
+          //error
+        }
+      }
+      this.loading = false;
+    },
+    registerChange(input) {
       this.change[input] = true;
-    }
+    },
   },
   computed: {
     ...mapState(authStore, ["token"]),
