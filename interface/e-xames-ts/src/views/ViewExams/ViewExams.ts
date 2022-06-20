@@ -36,11 +36,24 @@ export default {
       const res = await this.$api.getExamsList(this.token);
       if (res.status === 200) {
         this.exams = res.data.data.data;
-        this.nextLoad = res.data.data.nex_page_url;
+        this.nextLoad = res.data.data.next_page_url;
       } else {
         //error
       }
       this.loading = false;
+    },
+    async loadMore(event) {
+      event.preventDefault();
+      const res = await this.$api.getMoreExamsList(this.token, this.nextLoad);
+      if (res.status === 200) {
+        console.log(res);
+        this.exams.push(...res.data.data.data);
+        this.nextLoad = res.data.data.next_page_url
+          ? res.data.data.next_page_url
+          : '';
+      } else {
+        //error
+      }
     },
   },
 };

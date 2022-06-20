@@ -118,7 +118,24 @@ const api = {
       });
     return res;
   },
-
+  async getMoreExamsList(token, url) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .get(url, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+  
   async getClinic(token) {
     const config = {
       headers: {

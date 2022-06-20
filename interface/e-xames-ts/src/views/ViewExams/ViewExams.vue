@@ -26,6 +26,11 @@ import Loading from "../../components/Loading/Loading.vue";
           </template>
         </ViewExamsCard>
       </div>
+      <div class="self-end py-4" v-if="nextLoad != ''">
+    <button @click="loadMore($event)">
+    Carregar mais...
+    </button>
+    </div>
     </div>
   </div>
 </template>
