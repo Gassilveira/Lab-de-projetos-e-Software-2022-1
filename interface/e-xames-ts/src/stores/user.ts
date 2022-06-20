@@ -3,7 +3,7 @@ import { useStorage } from "@vueuse/core";
 
 const getDefaultState = () => {
   return {
-    name: useStorage("name", false),
+    name: useStorage("name", ""),
     hasClinic: useStorage("hasClinic", false),
   };
 };
