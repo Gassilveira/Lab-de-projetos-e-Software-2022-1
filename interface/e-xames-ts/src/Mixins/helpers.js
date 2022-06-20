@@ -1,14 +1,12 @@
-
 const helpers = {
   data() {
-    return {
-    }
+    return {};
   },
   methods: {
-    teste(){
-      console.log('helpers teste')
-    }
-  }
- };
+    teste() {
+      console.log("helpers teste");
+    },
+  },
+};
 
- export { helpers } ;
+export { helpers };

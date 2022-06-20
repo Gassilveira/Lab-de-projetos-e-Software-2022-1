@@ -52,7 +52,6 @@ export default {
       } else {
         //error
       }
-      console.log(res);
       this.isLoading = false;
       location.reload();
     },

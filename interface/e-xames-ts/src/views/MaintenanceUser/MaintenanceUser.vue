@@ -2,7 +2,8 @@
 <style src="./MaintenanceUser.css"></style>
 
 <template>
-  <div class="manutenodecontasusurio-container">
+  <Loading v-if="loading"></Loading>
+  <div class="manutenodecontasusurio-container" v-else>
     <div class="manutenodecontasusurio-container2">
       <h1 class="manutenodecontasusurio-text heading">
         <span>Manutenção de contas</span>
@@ -10,82 +11,74 @@
     </div>
     <div class="manutenodecontasusurio-container3">
       <h1 class="manutenodecontasusurio-text02">
-        <span>Informações gerais</span>
+        <span>Informações de seu usuário</span>
       </h1>
-      <div class="manutenodecontasusurio-container4">
-        <div class="manutenodecontasusurio-container5">
-          <div class="manutenodecontasusurio-container6">
-            <div class="manutenodecontasusurio-container7">
-              <label class="manutenodecontasusurio-text04">
-                <span>CPF</span>
-              </label>
-            </div>
-          </div>
-          <label class="manutenodecontasusurio-text06">
-            <span class="manutenodecontasusurio-text07">NOME COMPLETO</span>
-          </label>
-          <label class="manutenodecontasusurio-text08">
-            DATA DE NASCIMENTO
-          </label>
-          <label class="manutenodecontasusurio-text09">
-            <span>E-mAIL</span>
-          </label>
-          <label class="manutenodecontasusurio-text11">
-            <span>SENHA</span>
-          </label>
-        </div>
-        <div class="manutenodecontasusurio-container8">
+      <form
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+      >
+        <div class="flex flex-col gap-2 w-full">
+          <label class="uppercase font-extrabold">Nome Completo</label>
           <input
+            class="rounded-md py-1 px-4 border-blue-700"
             type="text"
-            id="usuariocpf"
-            name="cpfusuario"
-            required="true"
-            placeholder="CPF"
-            class="manutenodecontasusurio-input input"
-          />
-          <input
-            type="text"
-            id="usuarionome"
-            name="nomeusuario"
-            required="true"
-            placeholder="Nome Completo"
-            class="input lg"
-          />
-          <input
-            type="date"
-            id="usuarionascimento"
-            name="nascimentousuario"
-            required="true"
-            placeholder="Descrição do Exame"
-            class="input lg"
-          />
-          <input
-            type="email"
-            id="usuarioemail"
-            name="emailusuario"
-            required="true"
-            placeholder="E-Mail"
-            class="input lg"
-          />
-          <input
-            type="password"
-            id="usuariosenha"
-            name="senhausuario"
-            required="true"
-            placeholder="Senha"
-            class="input lg"
+            v-model="form.name"
           />
         </div>
-      </div>
+        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">cpf</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.cpf"
+          />
+        </div>
+        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">Data de Nascimento</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.birthday"
+          />
+        </div>
+        <div class="flex flex-col gap-2 w-full md:w-[50%]">
+          <label class="uppercase font-extrabold">e-mail</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.email"
+          />
+        </div>
+        <div class="w-full flex flex-row items-center py-8">
+          <button
+            class="mx-auto py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+          >
+            Salvar
+          </button>
+        </div>
+        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">Nova Senha</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.password"
+          />
+        </div>
+        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">Confirma Nova Senha</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.cPassword"
+          />
+        </div>
+        <div class="w-full flex flex-row items-center py-8">
+          <button
+            class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+          >
+            Salvar Nova Senha
+          </button>
+        </div>
+      </form>
     </div>
-    <button class="manutenodecontasusurio-button button">
-      <span>
-        <span>Salvar</span>
-        <span></span>
-      </span>
-    </button>
-    <button class="manutenodecontasusurio-button1 button">
-      <span><span>Nova senha</span></span>
-    </button>
   </div>
 </template>
