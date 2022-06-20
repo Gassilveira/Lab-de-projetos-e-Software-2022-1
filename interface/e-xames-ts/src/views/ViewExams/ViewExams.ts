@@ -1,19 +1,47 @@
-import NavigationLinks6 from "../../components/teleport/navigation-links6.vue";
-import FeatureCard1 from "../../components/teleport/feature-card1.vue";
-
+import { mapState } from 'pinia';
+import ViewExamsCard from '../../components/ViewExamsCard/ViewExamsCard.vue';
+import Loading from '../../components/Loading/Loading.vue';
+import { authStore } from '@/stores/auth';
 export default {
-  name: "ViewExames",
+  name: 'ViewExames',
   components: {
-    NavigationLinks6,
-    FeatureCard1,
+    ViewExamsCard,
+    Loading,
   },
   metaInfo: {
-    title: "Visualização Exames - Shadowy Hilarious Trout",
+    title: 'Visualização Exames',
     meta: [
       {
-        property: "og:title",
-        content: "Visualização Exames - Shadowy Hilarious Trout",
+        property: 'og:title',
+        content: 'Visualização Exames',
       },
     ],
+  },
+  computed: {
+    ...mapState(authStore, ['token']),
+  },
+  data() {
+    return {
+      loading: false,
+      exams: [],
+      nextLoad: '',
+    };
+  },
+  async beforeMount() {
+    await this.getExamsData();
+  },
+  methods: {
+    async getExamsData() {
+      this.loading = true;
+      const res = await this.$api.getExamsList(this.token);
+      if (res.status === 200) {
+        this.exams = res.data.data.data;
+        this.nextLoad = res.data.data.nex_page_url;
+        console.log(this.exams)
+      } else {
+        //error
+      }
+      this.loading = false;
+    },
   },
 };

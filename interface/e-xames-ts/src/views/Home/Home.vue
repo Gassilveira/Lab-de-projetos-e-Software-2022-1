@@ -21,14 +21,19 @@
         class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
         >Compartilhar Exames</router-link
       >
-      <div class="py-2 w-full flex flex-col gap-2 items-center" v-if="sharingCode !== ''">
-        <h2 class="font-semibold"> Sua URL de Compartilhamento: </h2>
-        <p>{{appURL}}exames/compartilhado/{{sharingCode}}</p>
-        <vue-qrcode :value="appURL + 'exames/compartilhado/' + sharingCode" :options="{ width: 200 }"></vue-qrcode>
+      <div
+        class="py-2 w-full flex flex-col gap-2 items-center"
+        v-if="sharingCode !== ''"
+      >
+        <h2 class="font-semibold">Sua URL de Compartilhamento:</h2>
+        <p>{{ appURL }}exames/compartilhado/{{ sharingCode }}</p>
+        <vue-qrcode
+          :value="appURL + 'exames/compartilhado/' + sharingCode"
+          :options="{ width: 200 }"
+        ></vue-qrcode>
       </div>
       <div class="py-2 w-full flex flex-col gap-2 items-center" v-else>
         <p>Você ainda não compartilhou seu histórico</p>
-        
       </div>
     </div>
   </div>

@@ -100,6 +100,24 @@ const api = {
       });
     return res;
   },
+
+  async getExamsList(token) {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+      },
+    };
+    const res = await instance
+      .get(baseUrl + "exams", config)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+    return res;
+  },
 };
 
 export { api };

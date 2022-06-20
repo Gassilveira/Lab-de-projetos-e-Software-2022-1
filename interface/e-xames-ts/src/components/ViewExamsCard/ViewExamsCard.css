@@ -1,0 +1,3 @@
+.test { width: 150px; height: 60px; overflow: hidden; position: relative; }
+
+.test:after { content: '...'; position: absolute; bottom: 0; right: 0; }
