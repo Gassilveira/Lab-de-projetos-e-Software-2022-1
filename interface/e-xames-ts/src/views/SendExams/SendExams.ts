@@ -67,8 +67,9 @@ export default {
           desc: '',
           file: '',
         };
+        this.callAlert('success', 'Exame Enviado com sucesso', 200);
       } else {
-        const code = (res.data.data.code)? res.data.data.code : 400;
+        const code = res.data.data.code ? res.data.data.code : 400;
         this.callAlert('error', this.MESSAGES[code], code);
       }
       this.loading = false;

@@ -14,6 +14,9 @@ import Loading from "../../components/Loading/Loading.vue";
     >
       <h1 class="visualizao-exames-text1">Lista de Exames</h1>
       <div class="flex flex-row gap-4 flex-wrap">
+        <div class="w-full text-center" v-if="exams.length == 0">
+        <p>Nenhum exame para mostrar</p>
+        </div>
         <ViewExamsCard
           :url="exam.url"
           v-for="(exam, index) in exams"
@@ -26,7 +29,7 @@ import Loading from "../../components/Loading/Loading.vue";
           </template>
         </ViewExamsCard>
       </div>
-      <div class="self-end py-4" v-if="nextLoad != ''">
+      <div class="self-end py-4" v-if="nextLoad != '' && nextLoad != null">
         <button @click="loadMore($event)">Carregar mais...</button>
       </div>
     </div>
