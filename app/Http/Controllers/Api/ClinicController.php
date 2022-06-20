@@ -21,9 +21,9 @@ class ClinicController extends BaseController
         $user = Auth::user();
 
         $clinic = ClinicUsers::with('user', 'clinic')
-            ->where('user_id', $user->id)->get()->makeHidden(['clinic_id','user_id','created_at','updated_at']);
+            ->where('user_id', $user->id)->first()->makeHidden(['clinic_id','user_id','created_at','updated_at']);
 
-        if($clinic->count() > 0)
+        if($clinic)
         {
             return $this->sendResponse($clinic, '');
         }else{
@@ -64,8 +64,9 @@ class ClinicController extends BaseController
             if(!$usePermition) {
                 return $this->sendError('Unauthorised.', ['error' => 'User not allowed in this clinic']);
             }
-            $clinic->name = $request->name;
-            $clinic->cnpj = $request->cnpj;
+            ($request->name)? ($clinic->name = $request->name): '';
+            ($request->cnpj)? ($clinic->cnpj = $request->cnpj): '';
+
             $clinic->save();
             return $this->sendResponse($clinic, 'Clinic successful updated!');
         }else{

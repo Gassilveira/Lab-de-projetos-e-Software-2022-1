@@ -118,6 +118,42 @@ const api = {
       });
     return res;
   },
+  
+  async getClinic(token) {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+      },
+    };
+    const res = await instance
+      .get(baseUrl + "clinic", config)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+    return res;
+  },
+
+  async updateClinic(token, payload) {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+      },
+    };
+    const res = await instance
+      .put(baseUrl + "clinic/update", payload, config)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+    return res;
+  },
 };
 
 export { api };

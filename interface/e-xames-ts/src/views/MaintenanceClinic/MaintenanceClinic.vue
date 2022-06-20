@@ -2,7 +2,8 @@
 <style src="./MaintenanceClinic.css"></style>
 
 <template>
-  <div class="manutenodecontasclnica-container">
+  <Loading v-if="loading"></Loading>
+  <div class="manutenodecontasclnica-container" v-else>
     <div class="manutenodecontasclnica-container2">
       <h1 class="manutenodecontasclnica-text heading">
         <span>Manutenção de contas</span>
@@ -12,97 +13,37 @@
       <h1 class="manutenodecontasclnica-text02">
         <span>Informações gerais</span>
       </h1>
-      <div class="manutenodecontasclnica-container4">
-        <div class="manutenodecontasclnica-container5">
-          <div class="manutenodecontasclnica-container6">
-            <div class="manutenodecontasclnica-container7">
-              <label class="manutenodecontasclnica-text04">
-                <span>CNPJ</span>
-              </label>
-            </div>
-          </div>
-          <label class="manutenodecontasclnica-text06">
-            <span class="manutenodecontasclnica-text07">RAZÃO SOCIAL</span>
-          </label>
-          <label class="manutenodecontasclnica-text08">NOME FANTASIA</label>
-          <label class="manutenodecontasclnica-text09"
-            ><span>E-mAIL</span></label
-          >
-          <label class="manutenodecontasclnica-text11"
-            ><span>SENHA</span></label
-          >
-          <label class="manutenodecontasclnica-text13">
-            <span>CHAVE API</span>
-          </label>
+      <form
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+      >
+        <div class="flex flex-col gap-2 w-full">
+          <label class="uppercase font-extrabold">Nome Fantasia</label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="form.name"
+            @change="registerChange('name')"
+          />
         </div>
-        <div class="manutenodecontasclnica-container8">
+        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">cnpj</label>
           <input
+            class="rounded-md py-1 px-4 border-blue-700"
             type="text"
-            id="clinicacnpj"
-            name="cnpjclinica"
-            required="true"
-            placeholder="CNPJ"
-            class="manutenodecontasclnica-input input"
+            v-model="form.cnpj"
+            @change="registerChange('cnpj')"
           />
-          <input
-            type="text"
-            id="clinicarazaosocial"
-            name="razaosocialclinica"
-            required="true"
-            placeholder="Razão Social"
-            class="input lg"
-          />
-          <input
-            type="text"
-            id="clinicafantasia"
-            name="fantasiaclinica"
-            required="true"
-            placeholder="Descrição do Exame"
-            class="input lg"
-          />
-          <input
-            type="email"
-            id="clinicaemail"
-            name="emailclinica"
-            required="true"
-            placeholder="E-Mail"
-            class="input lg"
-          />
-          <div>
-            <input
-              type="password"
-              id="clinicasenha"
-              name="senhaclinica"
-              required="true"
-              placeholder="Senha"
-              class="input lg"
-            />
-            <button class="manutenodecontasclnica-button1 button">
-              <span><span>Nova senha</span></span>
-            </button>
-          </div>
-
-          <div>
-            <input
-              type="text"
-              id="clinicachave"
-              name="chaveclinica"
-              disabled="true"
-              placeholder="Chave"
-              class="input lg"
-            />
-            <button class="manutenodecontasclnica-button2 button">
-              <span><span>Nova chave</span></span>
-            </button>
-          </div>
         </div>
-      </div>
+        <div class="w-full flex flex-row items-center py-8">
+          <button
+            class="mx-auto py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+            @click="saveClinic($event)"
+          >
+            Salvar
+          </button>
+        </div>
+       
+      </form>
     </div>
-    <button class="manutenodecontasclnica-button button">
-      <span>
-        <span>Salvar</span>
-        <span></span>
-      </span>
-    </button>
   </div>
 </template>
