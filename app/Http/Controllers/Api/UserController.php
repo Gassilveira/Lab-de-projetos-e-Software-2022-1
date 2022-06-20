@@ -49,10 +49,11 @@ class UserController extends BaseController
 
         if($user)
         {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->cpf = $request->cpf;
-            $user->birthday = $request->birthday;
+            ($request->name)? ($user->name = $request->name): '';
+            ($request->cpf)? ($user->cpf = $request->cpf): '';
+            ($request->email)? ($user->email = $request->email): '';
+            ($request->birthday)? ($user->birthday = $request->birthday): '';
+            $user->save();
             return $this->sendResponse($user, 'User updated successfully');
         }else{
             return $this->sendError('Unauthorised.', ['error' => '']);

@@ -22,6 +22,7 @@
             class="rounded-md py-1 px-4 border-blue-700"
             type="text"
             v-model="form.name"
+            @change="registerChange('name')"
           />
         </div>
         <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
@@ -30,6 +31,7 @@
             class="rounded-md py-1 px-4 border-blue-700"
             type="text"
             v-model="form.cpf"
+            @change="registerChange('cpf')"
           />
         </div>
         <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
@@ -38,6 +40,7 @@
             class="rounded-md py-1 px-4 border-blue-700"
             type="date"
             v-model="form.birthday"
+            @change="registerChange('birthday')"
           />
         </div>
         <div class="flex flex-col gap-2 w-full md:w-[50%]">
@@ -46,11 +49,13 @@
             class="rounded-md py-1 px-4 border-blue-700"
             type="text"
             v-model="form.email"
+            @change="registerChange('email')"
           />
         </div>
         <div class="w-full flex flex-row items-center py-8">
           <button
             class="mx-auto py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+            @click="saveUser($event)"
           >
             Salvar
           </button>

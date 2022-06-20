@@ -62,7 +62,24 @@ const api = {
       .catch((error) => {
         return error.response;
       });
-    console.log(res);
+    return res;
+  },
+
+  async updateUser(token, payload) {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+      },
+    };
+    const res = await instance
+      .put(baseUrl + "user/update", payload, config)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
     return res;
   },
 };

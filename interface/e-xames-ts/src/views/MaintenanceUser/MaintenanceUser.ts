@@ -25,6 +25,7 @@ export default {
       this.loading = true;
       const res = await this.$api.getUser(this.token);
       if (res.status === 200) {
+        this.form.userID = res.data.data.id;
         this.form.cpf = res.data.data.cpf;
         this.form.name = res.data.data.name;
         this.form.email = res.data.data.email;
@@ -34,6 +35,48 @@ export default {
       }
       this.loading = false;
     },
+    async saveUser(event) {
+      event.preventDefault();
+      if (
+        !this.change.cpf &&
+        !this.change.name &&
+        !this.change.email &&
+        !this.change.birthday
+      ) {
+        return false;
+      }
+      this.loading = true;
+      if (this.form.userID == "") {
+        //erro
+      } else {
+        let payload = {
+          id: this.form.userID,
+        };
+
+        this.change.cpf ? (payload.cpf = this.form.cpf) : "";
+        this.change.name ? (payload.name = this.form.name) : "";
+        this.change.email ? (payload.email = this.form.email) : "";
+        this.change.birthday ? (payload.birthday = this.form.birthday) : "";
+
+        const res = await this.$api.updateUser(this.token, payload);
+        if (res.status === 200) {
+          this.form.cpf = res.data.data.cpf;
+          this.form.name = res.data.data.name;
+          this.form.email = res.data.data.email;
+          this.form.birthday = res.data.data.birthday;
+          this.change.birthday = false;
+          this.change.cpf = false;
+          this.change.email = false;
+          this.change.name = false;
+        } else {
+          //error
+        }
+      }
+      this.loading = false;
+    },
+    registerChange(input){
+      this.change[input] = true;
+    }
   },
   computed: {
     ...mapState(authStore, ["token"]),
@@ -42,6 +85,7 @@ export default {
     return {
       loading: false,
       form: {
+        userID: "",
         cpf: "",
         name: "",
         birthday: "",
@@ -49,10 +93,16 @@ export default {
         password: "",
         cPassword: "",
       },
+      change: {
+        userID: false,
+        cpf: false,
+        name: false,
+        birthday: false,
+        email: false,
+      },
     };
   },
   setup() {
-    return {
-    };
+    return {};
   },
 };
