@@ -7,13 +7,19 @@ export default {
   el: "#HomeView",
   props: {},
   computed: {
-    ...mapState(userStore, ["name"]),
+    ...mapState(userStore, ["name", "sharingCode"]),
   },
   components: {
     Loading,
   },
+  data(){
+    return {
+      appURL:  import.meta.env.VUE_APP_URL
+    }
+  },
   methods: {},
   setup() {
-    return {};
+    return {
+    };
   },
 };

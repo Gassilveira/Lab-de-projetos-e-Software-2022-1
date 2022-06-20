@@ -55,6 +55,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/exames/compartilhado/:sharecode",
+      name: "ViewPublicExams",
+      component: () => import("../views/ViewPublicExams/ViewPublicExams.vue"),
+      props: true,
+      meta: {
+        requiredAuth: false,
+      },
+    },
+    {
       path: "/exames/enviar",
       name: "SendExams",
       component: () => import("../views/SendExams/SendExams.vue"),
@@ -68,7 +77,6 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const auth = authStore();
-  console.log(auth);
   if (to.matched.some((record) => record.meta.requiredAuth)) {
     if (auth.getLoginState) {
       next();

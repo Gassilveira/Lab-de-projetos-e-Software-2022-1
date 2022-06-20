@@ -28,6 +28,25 @@ const api = {
       });
     return res;
   },
+
+  async logout(token) {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+      },
+    };
+    const res = await axios
+      .get(baseUrl + "logout", config)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+    return res;
+  },
+  
   async getUser(token) {
     const config = {
       headers: {

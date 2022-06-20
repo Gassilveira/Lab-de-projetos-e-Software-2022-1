@@ -47,11 +47,20 @@ class AuthController extends BaseController
             $success['token'] = $user->createToken('Personal Token')->accessToken;
             $success['name'] =  $user->name;
             $success['has_clinic'] = ($user->clinic)? true : false;
+            $success['share_code'] = $user->share_code;
+
 
             return $this->sendResponse($success, 'User login successfully.');
         }
         else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::user()->token()->revoke();
+        return $this->sendResponse('', 'User logged out.');
+
     }
 }

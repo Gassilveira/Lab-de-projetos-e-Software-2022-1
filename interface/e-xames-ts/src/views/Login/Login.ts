@@ -45,15 +45,17 @@ export default {
       };
       const res = await this.$api.login(payload);
       if (res.status === 200) {
+        console.log(res.data.data);
         auth.isLoggedIN = true;
         auth.token = res.data.data.token;
         user.name = res.data.data.name;
         user.hasClinic = res.data.data.has_clinic;
+        user.sharingCode = res.data.data.share_code;
+        location.reload();
       } else {
         //error
       }
       this.isLoading = false;
-      location.reload();
     },
   },
   setup() {

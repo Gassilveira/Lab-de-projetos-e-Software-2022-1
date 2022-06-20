@@ -36,7 +36,7 @@
           <label class="uppercase font-extrabold">Data de Nascimento</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
-            type="text"
+            type="date"
             v-model="form.birthday"
           />
         </div>
