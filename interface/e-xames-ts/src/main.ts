@@ -15,6 +15,9 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import { helpers, api } from "./Mixins";
 
+/* qrcode */
+import VueQrcode from '@chenfengyuan/vue-qrcode';
+
 /* Stores */
 
 /* uses*/
@@ -23,6 +26,7 @@ app.use(router);
 app.use(VueSidebarMenu);
 app.use(VueAxios, { $axios: axios });
 app.mixin(helpers);
+app.component(VueQrcode.name, VueQrcode);
 
 /* API CALLS*/
 app.config.globalProperties.$api = api;
