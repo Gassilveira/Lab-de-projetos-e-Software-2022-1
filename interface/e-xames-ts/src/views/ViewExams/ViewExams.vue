@@ -19,18 +19,16 @@ import Loading from "../../components/Loading/Loading.vue";
           v-for="(exam, index) in exams"
           :key="index"
         >
-          <template v-slot:clinic> {{exam.clinic.name}} </template>
-          <template v-slot:specialty> {{exam.specialty}} </template>
+          <template v-slot:clinic> {{ exam.clinic.name }} </template>
+          <template v-slot:specialty> {{ exam.specialty }} </template>
           <template v-slot:desc>
-            {{exam.exam_desc}}
+            {{ exam.exam_desc }}
           </template>
         </ViewExamsCard>
       </div>
       <div class="self-end py-4" v-if="nextLoad != ''">
-    <button @click="loadMore($event)">
-    Carregar mais...
-    </button>
-    </div>
+        <button @click="loadMore($event)">Carregar mais...</button>
+      </div>
     </div>
   </div>
 </template>
