@@ -11,9 +11,9 @@ import "vue-sidebar-menu/dist/vue-sidebar-menu.css";
 import "@/assets/base.css";
 
 /* Vue Axios*/
-import axios from 'axios';
-import VueAxios from 'vue-axios';
-import {helpers, api} from './Mixins'
+import axios from "axios";
+import VueAxios from "vue-axios";
+import { helpers, api } from "./Mixins";
 
 /* Stores */
 
@@ -21,7 +21,7 @@ import {helpers, api} from './Mixins'
 app.use(createPinia());
 app.use(router);
 app.use(VueSidebarMenu);
-app.use(VueAxios, {$axios: axios});
+app.use(VueAxios, { $axios: axios });
 app.mixin(helpers);
 
 /* API CALLS*/

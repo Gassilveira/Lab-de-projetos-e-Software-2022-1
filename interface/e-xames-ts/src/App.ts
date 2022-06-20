@@ -1,11 +1,19 @@
-import { userStore } from './stores/user';
-import { useColorMode, useCycleList } from '@vueuse/core'
-import ToggleSwitch from './components/ToggleSwitch.vue'
+/* eslint-disable prettier/prettier */
+import { authStore } from "./stores/auth";
+import { userStore } from "./stores/user";
+import { useColorMode, useCycleList } from "@vueuse/core";
+import ToggleSwitch from "./components/ToggleSwitch.vue";
+import { mapState } from "pinia";
+
 export default {
   name: "App",
   mounted() {
     const initUserTheme = this.getTheme() || this.getMediaPreference();
     this.setTheme(initUserTheme);
+  },
+  computed: {
+    ...mapState(authStore, ["isLoggedIN", "token", "expireDate"]),
+    ...mapState(userStore, ["name", "hasClinic"]),
   },
   data() {
     return {
@@ -31,6 +39,7 @@ export default {
           href: "",
           title: "Usuário",
           icon: "fa-solid fa-circle-user",
+          hidden: this.getLoginState ? false : true,
           child: [
             {
               href: "/manutencao/usuario",
@@ -42,13 +51,14 @@ export default {
               title: "Visualizar Exames",
               icon: "fa fa-solid fa-file-waveform",
             },
-          ]
+          ],
         },
         {
           href: "",
           title: "Clinica",
           icon: "fa-solid fa-circle-h",
-          hidden: (this.hasClinic)? false : true,
+          hidden:
+            this.gethasClinic && this.getLoginState ? false : true,
           child: [
             {
               href: "/manutencao/clinica",
@@ -60,7 +70,7 @@ export default {
               title: "Enviar exames",
               icon: "fa fa-solid fa-file-arrow-down",
             },
-          ]
+          ],
         },
       ],
       collapsed: true,
@@ -79,7 +89,7 @@ export default {
       }
     },
     toggleTheme() {
-      const activeTheme = "light-theme";//localStorage.getItem("user-theme");
+      const activeTheme = "light-theme"; //localStorage.getItem("user-theme");
       if (activeTheme === "light-theme") {
         this.setTheme("dark-theme");
       } else {
@@ -87,7 +97,7 @@ export default {
       }
     },
     getTheme() {
-      return "light-theme";//localStorage.getItem("user-theme");
+      return "light-theme"; //localStorage.getItem("user-theme");
     },
     setTheme(theme) {
       //localStorage.setItem("user-theme", theme);
@@ -95,12 +105,12 @@ export default {
       document.documentElement.className = theme;
     },
     onItemClick(e, i) {
-      if(i.title === "Mode"){
+      if (i.title === "Mode") {
         const hasDarkPreference = window.matchMedia(
           "(prefers-color-scheme: light)"
         ).matches;
-        console.log(hasDarkPreference)
-        document.documentElement.className = "dark-theme"
+        console.log(hasDarkPreference);
+        document.documentElement.className = "dark-theme";
         this.next();
       }
     },
@@ -111,20 +121,22 @@ export default {
   },
   setup() {
     const mode = useColorMode({
-      attribute: 'class',
+      attribute: "class",
       modes: {
-        dark: 'dark-theme',
-        light: 'light-theme',
+        dark: "dark-theme",
+        light: "light-theme",
       },
     });
     const user = userStore();
-    const hasClinic = user.gethasClinic;
-    const { next } = useCycleList(['dark', 'light'], { initialValue: mode })
+    const auth = authStore();
+    const { next } = useCycleList(["dark", "light"], { initialValue: mode });
 
     return {
       mode,
       next,
-      hasClinic
+      getLoginState: auth.getLoginState,
+      gethasClinic: user.gethasClinic
+
     };
   },
 };

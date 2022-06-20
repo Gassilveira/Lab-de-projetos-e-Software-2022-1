@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import("../views/Login/Login.vue"),
       props: true,
       meta: {
-        requiredAuth: true,
+        requiredAuth: false,
       },
     },
     {
@@ -68,6 +68,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const auth = authStore();
+  console.log(auth);
   if (to.matched.some((record) => record.meta.requiredAuth)) {
     if (auth.getLoginState) {
       next();
