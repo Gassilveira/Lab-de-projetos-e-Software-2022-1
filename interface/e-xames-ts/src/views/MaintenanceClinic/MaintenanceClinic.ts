@@ -6,6 +6,7 @@ import Loading from '../../components/Loading/Loading.vue';
 export default {
   name: 'MaintenanceClinic',
   components: { Loading },
+  inject: ['callAlert'],
   metaInfo: {
     title: 'Manutenção de contas clínica',
     meta: [
@@ -53,8 +54,10 @@ export default {
           this.form.name = res.data.data.name;
           this.change.cpf = false;
           this.change.name = false;
+          this.callAlert('success', 'Atualização executada com sucesso', 200);
         } else {
-          //error
+          const code = (res.data.data.code)? res.data.data.code : 400;
+          this.callAlert('error', this.MESSAGES[code], code);
         }
       }
       this.loading = false;

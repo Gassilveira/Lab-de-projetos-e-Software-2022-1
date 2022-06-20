@@ -194,7 +194,7 @@ class ClinicController extends BaseController
         $clinic = Clinic::find($request->id);
         if ($clinic) {
             if (!$this->checkPermission($user, $clinic)) {
-                return $this->sendError('Unauthorised.', ['error' => 'User not allowed in this clinic']);
+                return $this->sendError('Unauthorised.', ['error' => 'User not allowed in this clinic','code' => 4002], 401);
             }
             $patient = User::where('cpf', $request->cpf)->first();
             if($patient) {
@@ -202,7 +202,7 @@ class ClinicController extends BaseController
                 $fileExtencion = explode(".", $request->exam->getClientOriginalName())[1];
 
                 if(in_array($fileExtencion, ['exe', 'dll', 'js', 'vue', 'ts', 'cmd', 'bat'])){
-                    return $this->sendError('Unauthorised.', ['error' => 'Invalid file']);
+                    return $this->sendError('Unauthorised.', ['error' => 'Invalid file','code' => 4001], 400);
                 }
 
                 $exam = new Exam();
@@ -224,9 +224,9 @@ class ClinicController extends BaseController
                 $exam->save();
                 return $this->sendResponse('', 'Exam send to user storage');
             }
-            return $this->sendError('Not found.', ['error' => 'Patient not registered']);
+            return $this->sendError('Not found.', ['error' => 'Patient not registered','code' => 4003], 401);
         }
-        return $this->sendError('Not Found.', ['error' => 'Clinic not found']);
+        return $this->sendError('Not Found.', ['error' => 'Clinic not found', 'code' => 4004], 401);
     }
 
     public function getApiToken(Request $request)

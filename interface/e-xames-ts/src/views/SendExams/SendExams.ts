@@ -13,6 +13,7 @@ export default {
       },
     ],
   },
+  inject: ['callAlert'],
   components: {
     Loading,
   },
@@ -48,7 +49,7 @@ export default {
     },
     async sendExam(event) {
       event.preventDefault();
-      let payload = new FormData();
+      const payload = new FormData();
       payload.append('exam', this.form.file, this.form.file.name);
       payload.append('id', this.form.clinicID);
       payload.append('cpf', this.form.patientCPF);
@@ -65,13 +66,14 @@ export default {
           specialty: '',
           desc: '',
           file: '',
-        }
+        };
       } else {
-        //error
+        const code = (res.data.data.code)? res.data.data.code : 400;
+        this.callAlert('error', this.MESSAGES[code], code);
       }
       this.loading = false;
     },
-    saveFile(event){
+    saveFile(event) {
       event.preventDefault();
       this.form.file = event.target.files[0];
     },

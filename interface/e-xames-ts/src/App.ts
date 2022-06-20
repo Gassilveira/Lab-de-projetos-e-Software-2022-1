@@ -15,6 +15,11 @@ export default {
     ...mapState(authStore, ["isLoggedIN", "token", "expireDate"]),
     ...mapState(userStore, ["name", "hasClinic"]),
   },
+  provide() {
+    return {
+      'callAlert': this.callAlert,
+    }
+  },
   data() {
     return {
       menu: [
@@ -116,6 +121,14 @@ export default {
     },
     onCollapse(c) {
       this.collapsed = c;
+    },
+    callAlert(type, header, message) {
+      this.$refs.alert
+        .showAlert(
+          type, //'success', // There are 4 types of alert: success, info, warning, error
+          header, //'Success 200', // Header of the alert
+          message //'This is the information of something you may know Success.' // Message of the alert
+        )
     },
   },
   setup() {

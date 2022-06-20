@@ -3,6 +3,7 @@ import ViewExamsCard from '../../components/ViewExamsCard/ViewExamsCard.vue';
 import Loading from '../../components/Loading/Loading.vue';
 import { authStore } from '@/stores/auth';
 export default {
+  inject: ['callAlert'],
   name: 'ViewExames',
   components: {
     ViewExamsCard,
@@ -30,6 +31,9 @@ export default {
   async beforeMount() {
     await this.getExamsData();
   },
+  mounted(){
+    //this.callAlert('success','Success 200','This is the information of something you may know Success.');
+  },
   methods: {
     async getExamsData() {
       this.loading = true;
@@ -38,7 +42,8 @@ export default {
         this.exams = res.data.data.data;
         this.nextLoad = res.data.data.next_page_url;
       } else {
-        //error
+        const code = (res.data.data.code)? res.data.data.code : 500;
+        this.callAlert('error', this.MESSAGES[code], code);
       }
       this.loading = false;
     },
@@ -52,7 +57,8 @@ export default {
           ? res.data.data.next_page_url
           : '';
       } else {
-        //error
+        const code = (res.data.data.code)? res.data.data.code : 500;
+        this.callAlert('error', this.MESSAGES[code], code);
       }
     },
   },

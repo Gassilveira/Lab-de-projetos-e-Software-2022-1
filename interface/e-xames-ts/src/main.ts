@@ -13,8 +13,8 @@ import "@/assets/base.css";
 /* Vue Axios*/
 import axios from "axios";
 import VueAxios from "vue-axios";
-import { helpers, api } from "./Mixins";
-
+import { helpers, api, constants} from "./Mixins";
+import VueBasicAlert from 'vue-basic-alert'
 /* qrcode */
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 
@@ -26,7 +26,9 @@ app.use(router);
 app.use(VueSidebarMenu);
 app.use(VueAxios, { $axios: axios });
 app.mixin(helpers);
+app.mixin(constants);
 app.component(VueQrcode.name, VueQrcode);
+app.component(VueBasicAlert.name, VueBasicAlert);
 
 /* API CALLS*/
 app.config.globalProperties.$api = api;

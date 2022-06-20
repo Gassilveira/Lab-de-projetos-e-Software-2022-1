@@ -13,5 +13,6 @@
   </header>
   <main class="ml-[64px]">
     <RouterView />
+    <VueBasicAlert :duration="300" :closeIn="3000" ref="alert" />
   </main>
 </template>

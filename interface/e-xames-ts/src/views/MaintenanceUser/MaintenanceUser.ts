@@ -5,6 +5,7 @@ import Loading from "../../components/Loading/Loading.vue";
 
 export default {
   name: "MaintenanceUser",
+  inject: ['callAlert'],
   components: {
     Loading,
   },
@@ -47,7 +48,8 @@ export default {
       }
       this.loading = true;
       if (this.form.userID == "") {
-        //erro
+        const code = 500;
+        this.callAlert('error', this.MESSAGES[code], code);
       } else {
         const payload = {
           id: this.form.userID,
@@ -69,7 +71,8 @@ export default {
           this.change.email = false;
           this.change.name = false;
         } else {
-          //error
+          const code = (res.data.data.code)? res.data.data.code : 400;
+          this.callAlert('error', this.MESSAGES[code], code);
         }
       }
       this.loading = false;
@@ -94,8 +97,10 @@ export default {
 
         const res = await this.$api.updateUserPassword(this.token, payload);
         if (res.status === 200) {
+          this.callAlert('sucess', 'Senha atualizada com sucesso', 200);
         } else {
-          //error
+          const code = (res.data.data.code)? res.data.data.code : 400;
+          this.callAlert('error', this.MESSAGES[code], code);
         }
       }
       this.loading = false;

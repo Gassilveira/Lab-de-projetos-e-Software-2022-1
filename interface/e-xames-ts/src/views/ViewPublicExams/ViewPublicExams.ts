@@ -1,3 +1,4 @@
+import { mount } from '@vue/test-utils';
 import Loading from "../../components/Loading/Loading.vue";
 
 export default {
