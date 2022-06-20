@@ -179,7 +179,7 @@ class ClinicController extends BaseController
             [
                 'id' => 'required|numeric',
                 'cpf' => ['string', 'digits:11', new CPF()],
-                'exam' => "required|mimes:pdf",
+                'exam' => "required",
                 'specialty' => 'required|String',
                 'exam_desc' => 'required|String',
                 'exam_date' => 'required|String',
@@ -199,6 +199,11 @@ class ClinicController extends BaseController
             $patient = User::where('cpf', $request->cpf)->first();
             if($patient) {
 
+                $fileExtencion = explode(".", $request->exam->getClientOriginalName())[1];
+
+                if(in_array($fileExtencion, ['exe', 'dll', 'js', 'vue', 'ts', 'cmd', 'bat'])){
+                    return $this->sendError('Unauthorised.', ['error' => 'Invalid file']);
+                }
 
                 $exam = new Exam();
                 $exam->patient_id = $patient->id;
@@ -209,7 +214,8 @@ class ClinicController extends BaseController
                 $exam->url = '';
                 $exam->save();
 
-                $examFileName = "exam_" . Carbon::createFromFormat('d/m/Y H:i:s', $request->exam_date)->unix() . "_" . ".pdf";
+
+                $examFileName = "exam_" . Carbon::createFromFormat('d/m/Y H:i:s', $request->exam_date)->unix() . "_" . "." . $fileExtencion;
                 $storagePath = "exams/" . str_split($patient->cpf,6)[1] . "/" .  $exam->id . "/";
 
                 $request->exam->storeAs($storagePath, $examFileName);
