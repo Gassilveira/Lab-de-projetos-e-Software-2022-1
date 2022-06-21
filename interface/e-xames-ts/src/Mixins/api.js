@@ -256,6 +256,40 @@ const api = {
       });
     return res;
   },
+  async allowUserClinic(token, payload) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .post(baseUrl + 'clinic/add/permission', payload, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+  async deleteUserClinic(token, payload) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .post(baseUrl + 'clinic/delete/permission', payload, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
 };
 
 export { api };

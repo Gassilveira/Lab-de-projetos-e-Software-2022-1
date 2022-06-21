@@ -53,7 +53,6 @@ export default {
       event.preventDefault();
       const res = await this.$api.getMoreExamsList(this.token, this.nextLoad);
       if (res.status === 200) {
-        console.log(res);
         this.exams.push(...res.data.data.data);
         this.nextLoad = res.data.data.next_page_url
           ? res.data.data.next_page_url

@@ -16,7 +16,7 @@
       <form
         class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
       >
-        <div class="flex flex-col gap-2 w-full">
+        <div class="flex flex-col gap-2 w-full md:w-[33%]">
           <label class="uppercase font-extrabold">Nome Fantasia</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -42,7 +42,43 @@
             Salvar
           </button>
         </div>
-       
+      </form>
+      <h2 class="py-4">Usuários com permissão na clinica</h2>
+      <div
+        class="bg-white w-full h-[100px] rounded-lg shadow-lg flex flex-row gap-2 flex-wrap p-2 md:w-[60%] md:flex-row"
+      >
+        <div
+          class="py-2 px-4 rounded-lg shadow-lg h-fit"
+          v-for="(user, index) in allowedUsers"
+          :key="index"
+        >
+          <label>{{ user.user.name }}</label>
+          <i
+            class="fa-solid fa-ban text-red-600 ml-2 cursor-pointer"
+            @click="deleteUser($event,user.user)"
+          ></i>
+        </div>
+      </div>
+      <h2 class="py-4">Adicionar usuários</h2>
+      <form
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+      >
+        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+          <label class="uppercase font-extrabold">cpf do usuário </label>
+          <input
+            class="rounded-md py-1 px-4 border-blue-700"
+            type="text"
+            v-model="allowForm.cpf"
+          />
+        </div>
+        <div class="w-full flex flex-row items-center py-8">
+          <button
+            class="mx-auto py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
+            @click="allowUser($event)"
+          >
+            Adicionar
+          </button>
+        </div>
       </form>
     </div>
   </div>
