@@ -3,6 +3,7 @@ import { authStore } from "./stores/auth";
 import { userStore } from "./stores/user";
 import { useColorMode, useCycleList } from "@vueuse/core";
 import ToggleSwitch from "./components/ToggleSwitch.vue";
+
 import { mapState } from "pinia";
 
 export default {
@@ -34,6 +35,12 @@ export default {
           // props: componentProps
           hidden: true,
           // hiddenOnCollapse: true
+        },
+        {
+          href: "",
+          title: "Sair",
+          hidden: this.getLoginState ? false : true,
+          icon: "fa-solid fa-right-from-bracket mx-auto my-0",
         },
         {
           href: "/",
@@ -117,6 +124,11 @@ export default {
 
         document.documentElement.className = "dark-theme";
         this.next();
+      }
+      if(i.title == 'Sair'){
+        this.$api.logout(this.token);
+        localStorage.clear()
+        location.reload();
       }
     },
     onCollapse(c) {
