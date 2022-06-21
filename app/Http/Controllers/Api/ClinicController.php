@@ -219,6 +219,7 @@ class ClinicController extends BaseController
                 $storagePath = "exams/" . str_split($patient->cpf,6)[1] . "/" .  $exam->id . "/";
 
                 $request->exam->storeAs($storagePath, $examFileName);
+                $storagePath = str_replace("/", "-", $storagePath);
                 $exam->url = $storagePath . $examFileName;
 
                 $exam->save();

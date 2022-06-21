@@ -88,17 +88,21 @@ class ExamsController extends BaseController
     {
         $fileName = str_replace("-", "/", $file);
 
-        $exam = Exam::where('url', $fileName)->first();
+        $exam = Exam::where('url', $file)->first();
+        if(!$exam){
+            return $this->sendError('Not found.', ['error' => 'Exam not found'], 401);
+        }
         $user = User::find($exam->patient_id);
 
         if($user->share_code == ""){
             return $this->sendError('Unauthorised.', ['error' => 'Share not allowed']);
         }
+        $fileExtencion = explode(".", $fileName)[1];
 
         $headers = array(
-            'Content-Type: application/pdf',
+            'Content-Type: application/*',
         );
 
-        return  Storage::download($fileName,'filename.pdf',$headers);
+        return  Storage::download($fileName,'filename.' . $fileExtencion,$headers);
     }
 }
