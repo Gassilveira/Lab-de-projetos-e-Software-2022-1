@@ -38,7 +38,7 @@ class ExamsController extends BaseController
             if($user->share_code != null) {
                 return $this->sendResponse(['code' => $user->share_code], 'You are sharing!');
             }else {
-                $user->share_code = Str::random(100);
+                $user->share_code = Str::random(25);
                 $user->save();
                 return $this->sendResponse(['code' => $user->share_code], 'You are sharing!');
             }

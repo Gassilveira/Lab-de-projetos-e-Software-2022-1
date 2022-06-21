@@ -27,7 +27,7 @@ export default {
       if (this.sharingCode != '' && this.toggleShare != null) {
         const res = await this.$api.unshareHistory(this.token);
         if (res.status == 200) {
-          auth.sharingCode = null;
+          auth.sharingCode = '';
           this.callAlert(
             'success',
             'Compartilhamento desabilitador com sucesso!',
