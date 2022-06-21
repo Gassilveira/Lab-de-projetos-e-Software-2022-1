@@ -188,6 +188,41 @@ const api = {
       });
     return res;
   },
+
+  async shareHistory(token) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .get(baseUrl + 'exams/share', config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+  async unshareHistory(token, payload) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .get(baseUrl + 'exams/unshare', config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
 };
 
 export { api };

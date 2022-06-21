@@ -35,7 +35,7 @@ Route::middleware('auth:api')->group( function () {
 
     /* Exams history */
     Route::get('exams/share', [App\Http\Controllers\Api\ExamsController::class, 'share']);
-    Route::put('exams/unshare', [App\Http\Controllers\Api\ExamsController::class, 'unshare']);
+    Route::get('exams/unshare', [App\Http\Controllers\Api\ExamsController::class, 'unshare']);
 
     /* Clinic */
     Route::get('clinic', [App\Http\Controllers\Api\ClinicController::class, 'get']);

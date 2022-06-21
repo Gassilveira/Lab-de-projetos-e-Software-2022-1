@@ -25,9 +25,5 @@ export const authStore = defineStore({
     },
   },
   actions: {
-    setInitialState() {
-      localStorage.clear()
-      this.$state = getDefaultState();
-    } 
   },
 });

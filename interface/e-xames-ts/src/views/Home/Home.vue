@@ -16,14 +16,17 @@
         class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
         >Visualizar exames</router-link
       >
-      <router-link
-        :to="'/exames'"
+      <button
         class="py-2 px-4 shadow-lg text-slate-200 rounded-md bg-teal-700"
-        >Compartilhar Exames</router-link
-      >
+        @click="toggleShare($event)">
+        <span v-if="sharingCode != '' && sharingCode != null">
+          Desabilitar Compartilhamento
+        </span>
+        <span v-else> Compartilhar Exames</span>
+      </button>
       <div
         class="py-2 w-full flex flex-col gap-2 items-center"
-        v-if="sharingCode !== ''"
+        v-if="sharingCode !== '' && sharingCode != null"
       >
         <h2 class="font-semibold">Sua URL de Compartilhamento:</h2>
         <p>{{ appURL }}exames/compartilhado/{{ sharingCode }}</p>
