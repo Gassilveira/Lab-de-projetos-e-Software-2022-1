@@ -42,7 +42,7 @@
 https://youtu.be/cp1HtYDx2rY
 
 
-## Front em interface/e-xames-ts/
+# Front em interface/e-xames-ts/
 
 ## Relatório:
 https://docs.google.com/document/d/1yMDMYWEmUKIkpmWvLS5pwebQfWEgEBnm/edit
@@ -52,7 +52,7 @@ https://youtu.be/5qDtKp5lj8I
 
 ## Zip laragon:
 https://drive.google.com/file/d/1KcukoDa10HRNZyOkbTOKt5jhdm2LdQAW/view?usp=sharing
-No larago abrir terminal na pasta do front (interface/e-xames-ts/) executar npm run dev
+No laragon abrir terminal na pasta do front (interface/e-xames-ts/) executar npm run dev
 
 ## Drive projeto:
 https://drive.google.com/drive/folders/1PDcKq5aydNOmz9oz9q6tF7PyjFB4PT8w
