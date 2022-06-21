@@ -41,8 +41,7 @@ export default {
       this.loading = true;
       const res = await this.$api.getClinic(this.token);
       if (res.status === 200) {
-        this.form.clinicID = res.data.data.clinic.clinic.id;
-        console.log(res.data)
+        this.form.clinicID = res.data.data.clinic.id;
       } else {
         //error
       }
@@ -60,14 +59,11 @@ export default {
       this.loading = true;
       const res = await this.$api.sendExam(this.token, payload);
       if (res.status === 200) {
-        this.form = {
-          clinicID: '',
-          patientCPF: '',
-          date: '',
-          specialty: '',
-          desc: '',
-          file: '',
-        };
+        this.form.patientCPF ='';
+        this.form.date =  '';
+        this.form.specialty = '';
+        this.form.desc = '';
+        this.form.file = '';
         this.callAlert('success', 'Exame Enviado com sucesso', 200);
       } else {
         const code = res.data.data.code ? res.data.data.code : 400;
