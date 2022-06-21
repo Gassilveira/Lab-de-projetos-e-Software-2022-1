@@ -7,6 +7,7 @@ import { mapState } from "pinia";
 export default {
   name: "LoginView",
   el: "#LoginView",
+  inject: ['callAlert'],
   props: {},
   computed: {
     ...mapState(authStore, ["isLoggedIN", "token", "expireDate"]),
@@ -52,7 +53,7 @@ export default {
         user.sharingCode = res.data.data.share_code;
         location.reload();
       } else {
-        //error
+        this.callAlert('error', "Falha no login tente novamente", 400);
       }
       this.isLoading = false;
     },

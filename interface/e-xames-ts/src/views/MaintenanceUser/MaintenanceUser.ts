@@ -97,7 +97,7 @@ export default {
 
         const res = await this.$api.updateUserPassword(this.token, payload);
         if (res.status === 200) {
-          this.callAlert('sucess', 'Senha atualizada com sucesso', 200);
+          this.callAlert('success', 'Senha atualizada com sucesso', 200);
         } else {
           const code = (res.data.data.code)? res.data.data.code : 400;
           this.callAlert('error', this.MESSAGES[code], code);
