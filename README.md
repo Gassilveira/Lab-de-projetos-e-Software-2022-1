@@ -36,7 +36,7 @@
 - docker exec -it {{nome do container ou id}} /bin/bash
 
 
-## Docker incompleto ( Nâo funciona 100%)
+## Docker incompleto ( Não funciona 100%)
 
 ## Video apresentação 1: 
 https://youtu.be/cp1HtYDx2rY
