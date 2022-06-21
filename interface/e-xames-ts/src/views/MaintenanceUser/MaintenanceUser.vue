@@ -14,7 +14,7 @@
         <span>Informações de seu usuário</span>
       </h1>
       <form
-        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap xl:w-[60%] xl:flex-row"
       >
         <div class="flex flex-col gap-2 w-full">
           <label class="uppercase font-extrabold">Nome Completo</label>
@@ -25,7 +25,7 @@
             @change="registerChange('name')"
           />
         </div>
-        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 flex-grow w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">cpf</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -34,7 +34,7 @@
             @change="registerChange('cpf')"
           />
         </div>
-        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 flex-grow w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">Data de Nascimento</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -43,7 +43,7 @@
             @change="registerChange('birthday')"
           />
         </div>
-        <div class="flex flex-col gap-2 w-full md:w-[50%]">
+        <div class="flex flex-col gap-2 w-full xl:w-[50%]">
           <label class="uppercase font-extrabold">e-mail</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -60,7 +60,7 @@
             Salvar
           </button>
         </div>
-        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">Nova Senha</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -68,7 +68,7 @@
             v-model="form.password"
           />
         </div>
-        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">Confirma Nova Senha</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"

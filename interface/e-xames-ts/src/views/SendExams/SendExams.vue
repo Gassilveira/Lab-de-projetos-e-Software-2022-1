@@ -8,9 +8,9 @@
       <h1 class="uploadexames-text heading">ENVIO DE EXAMES</h1>
     </div>
     <form
-      class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+      class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap xl:w-[60%] xl:flex-row"
     >
-      <div class="flex flex-col gap-2 basis-[33%]">
+      <div class="flex flex-col gap-2 w-[80%] xl:w-[33%]">
         <label class="uppercase font-extrabold">cpf do paciente</label>
         <input
           class="rounded-md py-1 px-4 border-blue-700"
@@ -18,7 +18,7 @@
           v-model="form.patientCPF"
         />
       </div>
-      <div class="flex flex-col gap-2 basis-[33%]">
+      <div class="flex flex-col gap-2 w-[80%] xl:w-[33%]">
         <label class="uppercase font-extrabold">Data/hora exame</label>
         <input
           class="rounded-md py-1 px-4 border-blue-700"
@@ -26,7 +26,7 @@
           v-model="form.date"
         />
       </div>
-      <div class="flex flex-col gap-2 basis-[33%]">
+      <div class="flex flex-col gap-2 w-[80%] xl:w-[33%]">
         <label class="uppercase font-extrabold">especialidade</label>
         <input
           class="rounded-md py-1 px-4 border-blue-700"
@@ -34,7 +34,7 @@
           v-model="form.specialty"
         />
       </div>
-      <div class="flex flex-col gap-2 basis-[33%]">
+      <div class="flex flex-col gap-2 w-[80%] xl:w-[33%]">
         <label class="uppercase font-extrabold">Arquivo</label>
         <input
           class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 py-1 px-4"
@@ -42,7 +42,7 @@
           @change="saveFile($event)"
         />
       </div>
-      <div class="flex flex-col gap-2 basis-[70%]">
+      <div class="flex flex-col gap-2 w-[80%] xl:w-[70%]">
         <label class="uppercase font-extrabold">descrição do exame</label>
         <textarea
           class="rounded-md py-1 px-4 border-blue-700"

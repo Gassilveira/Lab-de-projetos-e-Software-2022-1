@@ -14,9 +14,9 @@
         <span>Informações gerais</span>
       </h1>
       <form
-        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap xl:w-[60%] xl:flex-row"
       >
-        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">Nome Fantasia</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -25,7 +25,7 @@
             @change="registerChange('name')"
           />
         </div>
-        <div class="flex flex-col gap-2 flex-grow w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 flex-grow w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">cnpj</label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
@@ -45,7 +45,7 @@
       </form>
       <h2 class="py-4">Usuários com permissão na clinica</h2>
       <div
-        class="bg-white w-full h-[100px] rounded-lg shadow-lg flex flex-row gap-2 flex-wrap p-2 md:w-[60%] md:flex-row"
+        class="bg-white w-[80%] h-[100px] rounded-lg shadow-lg flex flex-row gap-2 flex-wrap p-2 xl:w-[60%] xl:flex-row"
       >
         <div
           class="py-2 px-4 rounded-lg shadow-lg h-fit"
@@ -61,9 +61,9 @@
       </div>
       <h2 class="py-4">Adicionar usuários</h2>
       <form
-        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap md:w-[60%] md:flex-row"
+        class="flex flex-col px-10 py-8 w-full gap-8 flex-wrap xl:w-[60%] xl:flex-row"
       >
-        <div class="flex flex-col gap-2 w-full md:w-[33%]">
+        <div class="flex flex-col gap-2 w-full xl:w-[33%]">
           <label class="uppercase font-extrabold">cpf do usuário </label>
           <input
             class="rounded-md py-1 px-4 border-blue-700"
