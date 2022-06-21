@@ -78,10 +78,16 @@ export default {
               icon: "fa fa-solid fa-house-chimney-medical",
             },
             {
+              href: "/manutencao/clinica/registrar/paciente",
+              title: "Registrar paciente",
+              icon: "fa-solid fa-registered",
+            },
+            {
               href: "/exames/enviar",
               title: "Enviar exames",
               icon: "fa fa-solid fa-file-arrow-down",
             },
+            
           ],
         },
       ],

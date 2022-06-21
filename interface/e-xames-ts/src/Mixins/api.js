@@ -290,6 +290,23 @@ const api = {
       });
     return res;
   },
+  async registerPatient(token, payload) {
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .post(baseUrl + 'register/user', payload, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
 };
 
 export { api };
