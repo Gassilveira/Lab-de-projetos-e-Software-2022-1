@@ -1,17 +1,67 @@
-import { mount } from '@vue/test-utils';
-import Loading from "../../components/Loading/Loading.vue";
-
+import ViewExamsCard from '../../components/ViewExamsCard/ViewExamsCard.vue';
+import Loading from '../../components/Loading/Loading.vue';
 export default {
-  name: "ViewPublicExams",
-  el: "#ViewPublicExams",
-  props: {},
-  computed: {
-  },
+  inject: ['callAlert'],
+  name: 'ViewPublicExams',
   components: {
+    ViewExamsCard,
     Loading,
   },
-  methods: {},
-  setup() {
-    return {};
+  metaInfo: {
+    title: 'Visualização Exames',
+    meta: [
+      {
+        property: 'og:title',
+        content: 'Visualização Exames',
+      },
+    ],
+  },
+  props:{
+    sharecode:{
+      type: String,
+      required: true
+    }
+  },
+  computed: {},
+  data() {
+    return {
+      loading: false,
+      exams: [],
+      nextLoad: '',
+    };
+  },
+  async beforeMount() {
+    await this.getExamsData();
+  },
+  mounted(){
+    //this.callAlert('success','Success 200','This is the information of something you may know Success.');
+  },
+  methods: {
+    async getExamsData() {
+      this.loading = true;
+      const res = await this.$api.getPublicExam(this.sharecode);
+      if (res.status === 200) {
+        this.exams = res.data.data.data;
+        this.nextLoad = res.data.data.next_page_url;
+      } else {
+        const code = (res.data.data.code)? res.data.data.code : 500;
+        this.callAlert('error', this.MESSAGES[code], code);
+      }
+      this.loading = false;
+    },
+    async loadMore(event) {
+      event.preventDefault();
+      const res = await this.$api.getMoreExamsList(this.token, this.nextLoad);
+      if (res.status === 200) {
+        console.log(res);
+        this.exams.push(...res.data.data.data);
+        this.nextLoad = res.data.data.next_page_url
+          ? res.data.data.next_page_url
+          : '';
+      } else {
+        const code = (res.data.data.code)? res.data.data.code : 500;
+        this.callAlert('error', this.MESSAGES[code], code);
+      }
+    },
   },
 };

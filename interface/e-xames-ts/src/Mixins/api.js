@@ -135,7 +135,40 @@ const api = {
       });
     return res;
   },
-  
+
+  async getPublicExam(code) {
+    const config = {
+      headers: {
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .get(baseUrl + 'exams/history/' + code, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+  async getMorePublicExam(url) {
+    const config = {
+      headers: {
+        Accept: 'application/json',
+      },
+    };
+    const res = await instance
+      .get(url, config)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        return error.response;
+      });
+    return res;
+  },
+
   async getClinic(token) {
     const config = {
       headers: {

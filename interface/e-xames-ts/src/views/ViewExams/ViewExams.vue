@@ -1,6 +1,4 @@
-<script src="./ViewExams.ts" lang="ts">
-import Loading from "../../components/Loading/Loading.vue";
-</script>
+<script src="./ViewExams.ts" lang="ts"></script>
 <style src="./ViewExams.css"></style>
 
 <template>
