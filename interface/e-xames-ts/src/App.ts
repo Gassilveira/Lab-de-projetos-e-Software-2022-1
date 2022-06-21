@@ -136,6 +136,7 @@ export default {
         localStorage.clear()
         location.reload();
       }
+      this.collapsed  = !this.collapsed;
     },
     onCollapse(c) {
       this.collapsed = c;

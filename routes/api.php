@@ -48,7 +48,7 @@ Route::middleware('auth:api')->group( function () {
 
     /* Exams */
     Route::get('exams', [App\Http\Controllers\Api\ExamsController::class, 'list']);
-
+    //Route::get('exams/get/{file}', [App\Http\Controllers\Api\ExamsController::class, 'get']);
 
 
 });

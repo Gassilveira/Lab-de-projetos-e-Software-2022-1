@@ -29,7 +29,7 @@
         v-if="sharingCode !== '' && sharingCode != null"
       >
         <h2 class="font-semibold">Sua URL de Compartilhamento:</h2>
-        <p>{{ appURL }}exames/compartilhado/{{ sharingCode }}</p>
+        <p class="">{{ appURL }}exames/compartilhado/{{ sharingCode }}</p>
         <vue-qrcode
           :value="appURL + 'exames/compartilhado/' + sharingCode"
           :options="{ width: 200 }"

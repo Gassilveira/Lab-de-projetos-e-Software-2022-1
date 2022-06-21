@@ -92,10 +92,21 @@ class ExamsController extends BaseController
         if(!$exam){
             return $this->sendError('Not found.', ['error' => 'Exam not found'], 401);
         }
-        $user = User::find($exam->patient_id);
 
-        if($user->share_code == ""){
-            return $this->sendError('Unauthorised.', ['error' => 'Share not allowed']);
+        if($request->bearerToken() != null){
+            $user = Auth::guard('api')->user();
+            if(!$user){
+                return $this->sendError('Unauthorised.', ['error' => 'User not allowed']);
+            }
+            if($user->id != $exam->patient_id){
+                return $this->sendError('Unauthorised.', ['error' => 'User not allowed']);
+            }
+        }else{
+            $user = User::find($exam->patient_id);
+
+            if($user->share_code == "" ){
+                return $this->sendError('Unauthorised.', ['error' => 'Share not allowed']);
+            }
         }
         $fileExtencion = explode(".", $fileName)[1];
 
