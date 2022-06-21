@@ -43,3 +43,21 @@ Instruções Projeto (WSL + Docker)... Utilize WSL com ubuntu
 - Para conectar ao container 
 - docker ps -a para listar container 
 - docker exec -it {{nome do container ou id}} /bin/bash
+
+
+
+
+
+
+
+Relatório:
+https://docs.google.com/document/d/1yMDMYWEmUKIkpmWvLS5pwebQfWEgEBnm/edit
+
+Vídeo: 
+https://youtu.be/5qDtKp5lj8I
+
+Zip laragon:
+https://drive.google.com/file/d/1KcukoDa10HRNZyOkbTOKt5jhdm2LdQAW/view?usp=sharing
+
+Drive projeto:
+https://drive.google.com/drive/folders/1PDcKq5aydNOmz9oz9q6tF7PyjFB4PT8w
