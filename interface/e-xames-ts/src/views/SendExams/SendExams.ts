@@ -41,7 +41,8 @@ export default {
       this.loading = true;
       const res = await this.$api.getClinic(this.token);
       if (res.status === 200) {
-        this.form.clinicID = res.data.data.clinic.id;
+        this.form.clinicID = res.data.data.clinic.clinic.id;
+        console.log(res.data)
       } else {
         //error
       }
