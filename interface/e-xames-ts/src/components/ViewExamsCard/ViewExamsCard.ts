@@ -4,6 +4,7 @@ import { mapState } from 'pinia';
 export default {
   name: 'ViewExamsCard',
   el: '#ViewExamsCard',
+  inject: ['callAlert'],
   props: {
     url: {
       type: String,
@@ -28,7 +29,8 @@ export default {
             Authorization: 'Bearer ' + this.token,
             Accept: 'application/json',
           },
-        }).then(response => response.blob())
+        })
+          .then(response => response.blob())
           .then(blob => {
             const _url = window.URL.createObjectURL(blob);
             window.open(_url, '_blank').focus(); // window.open + focus
@@ -42,10 +44,19 @@ export default {
             Authorization: 'Bearer ' + this.token,
             Accept: 'application/json',
           },
-        }).then(response => response.blob())
+        })
+          .then(response => response.blob())
           .then(blob => {
-            const _url = window.URL.createObjectURL(blob);
-            window.open(_url, '_blank').focus(); // window.open + focus
+            if (blob.type != 'application/json') {
+              const _url = window.URL.createObjectURL(blob);
+              window.open(_url, '_blank').focus(); // window.open + focus
+            } else {
+              this.callAlert(
+                'error',
+                'Não foi possivel abrir este arquivo',
+                500,
+              );
+            }
           })
           .catch(err => {
             console.log(err);
